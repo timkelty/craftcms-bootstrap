@@ -1,5 +1,5 @@
 {
-  "name": "fusionary/craftcms/bootstrap",
+  "name": "fusionary/craftcms-bootstrap",
   "description": "Craft CMS Bootstrap",
   "require": {
     "php": ">=7.0.0",
