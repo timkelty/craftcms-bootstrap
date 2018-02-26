@@ -3,15 +3,31 @@ namespace fusionary\craftcms\bootstrap;
 
 use Cekurte\Environment\Environment;
 use Dotenv\Dotenv;
-use yii\base\BaseObject;
 
-class Bootstrap extends BaseObject
+class Bootstrap
 {
-    protected static $instance;
 
-    public static function create()
+    public $app;
+    protected $appType;
+
+    public function __construct($appType)
     {
-        return static::$instance ?? new static;
+        $this->appType = $appType;
+
+        $this
+            ->defineConstant('CRAFT_VENDOR_PATH', dirname(__DIR__, 3))
+            ->defineConstant('CRAFT_BASE_PATH', dirname(CRAFT_VENDOR_PATH, 2))
+            ->defineConstant('CRAFT_TEMPLATES_PATH', CRAFT_BASE_PATH . '/src/views')
+            ->dotEnv();
+
+        $this->app = require CRAFT_VENDOR_PATH . '/craftcms/cms/bootstrap/' . $this->appType . '.php';
+
+        return $this;
+    }
+
+    public static function create($appType = 'web')
+    {
+        return new static($appType);
     }
 
     public function defineConstant($name, $value)
@@ -33,15 +49,16 @@ class Bootstrap extends BaseObject
             error_log($e->getMessage);
         }
 
-        return $this;
+        return $this->defineConstant('CRAFT_ENVIRONMENT', Environment::get('CRAFT_ENVIRONMENT', 'production'));
     }
 
-    public function getApp($type = 'web')
+    public function run()
     {
-        $this
-          ->defineConstant('CRAFT_TEMPLATES_PATH', CRAFT_BASE_PATH . '/src/views')
-          ->defineConstant('CRAFT_ENVIRONMENT', Environment::get('CRAFT_ENVIRONMENT', 'production'));
+        return $this->app->run();
+    }
 
-        return require CRAFT_VENDOR_PATH . '/craftcms/cms/bootstrap/' . $type . '.php';
+    public function runAndExit()
+    {
+        exit($this->run());
     }
 }
