@@ -17,7 +17,7 @@ class Bootstrap
         $this
             ->defineConstant('CRAFT_VENDOR_PATH', dirname(__DIR__, 3))
             ->defineConstant('CRAFT_BASE_PATH', dirname(CRAFT_VENDOR_PATH, 2))
-            ->defineConstant('CRAFT_TEMPLATES_PATH', CRAFT_BASE_PATH . '/src/views')
+            ->defineConstant('CRAFT_TEMPLATES_PATH', CRAFT_BASE_PATH . '/src/templates')
             ->dotEnv();
 
         $this->app = require CRAFT_VENDOR_PATH . '/craftcms/cms/bootstrap/' . $this->appType . '.php';
