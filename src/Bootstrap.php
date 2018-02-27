@@ -3,31 +3,38 @@ namespace fusionary\craftcms\bootstrap;
 
 use Cekurte\Environment\Environment;
 use Dotenv\Dotenv;
+use yii\base\BaseObject;
 
-class Bootstrap
+class Bootstrap extends BaseObject
 {
+    protected $instance;
+    const TYPES = ['web', 'console'];
 
-    public $app;
-    protected $appType;
-
-    public function __construct($appType)
+    public function __construct()
     {
-        $this->appType = $appType;
-
-        $this
-            ->defineConstant('CRAFT_VENDOR_PATH', dirname(__DIR__, 3))
-            ->defineConstant('CRAFT_BASE_PATH', dirname(CRAFT_VENDOR_PATH, 2))
-            ->defineConstant('CRAFT_TEMPLATES_PATH', CRAFT_BASE_PATH . '/src/templates')
-            ->dotEnv();
-
-        $this->app = require CRAFT_VENDOR_PATH . '/craftcms/cms/bootstrap/' . $this->appType . '.php';
+        $this->instance = $this;
 
         return $this;
     }
 
-    public static function create($appType = 'web')
+    public static function getInstance()
     {
-        return new static($appType);
+        return static::$instance ?? new static;
+    }
+
+    public function getApp($type = 'web')
+    {
+        if (!in_array($type, static::TYPES)) {
+            throw new \Exception($type . ' is not a valid app type.');
+        }
+
+        $this
+          ->defineConstant('CRAFT_VENDOR_PATH', dirname(__DIR__, 3))
+          ->defineConstant('CRAFT_BASE_PATH', dirname(realpath($_SERVER['SCRIPT_FILENAME']), 2))
+          ->defineConstant('CRAFT_TEMPLATES_PATH', CRAFT_BASE_PATH . '/src/templates')
+          ->dotEnv();
+
+        return require CRAFT_VENDOR_PATH . '/craftcms/cms/bootstrap/' . $type . '.php';
     }
 
     public function defineConstant($name, $value)
@@ -46,19 +53,9 @@ class Bootstrap
         try {
             $dotenv->load();
         } catch (\Dotenv\Exception\InvalidPathException $e) {
-            error_log($e->getMessage);
+            error_log($e->getMessage());
         }
 
         return $this->defineConstant('CRAFT_ENVIRONMENT', Environment::get('CRAFT_ENVIRONMENT', 'production'));
-    }
-
-    public function run()
-    {
-        return $this->app->run();
-    }
-
-    public function runAndExit()
-    {
-        exit($this->run());
     }
 }
