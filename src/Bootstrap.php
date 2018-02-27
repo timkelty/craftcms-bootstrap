@@ -25,7 +25,7 @@ class Bootstrap extends BaseObject
     public function getApp($type = 'web')
     {
         if (!in_array($type, static::TYPES)) {
-            throw new \Exception($type . ' is not a valid app type.');
+            throw new \Exception(sprintf('"%s" is not a valid type.', $type));
         }
 
         $this
