@@ -3,10 +3,10 @@ namespace fusionary\craftcms\bootstrap;
 
 use Cekurte\Environment\Environment;
 use Dotenv\Dotenv;
-use yii\base\BaseObject;
 
-class Bootstrap extends BaseObject
+class Bootstrap
 {
+    protected $depth = 1;
     protected $instance;
     const TYPES = ['web', 'console'];
 
@@ -29,19 +29,26 @@ class Bootstrap extends BaseObject
         }
 
         $this
-          ->defineConstant('CRAFT_VENDOR_PATH', dirname(__DIR__, 3))
-          ->defineConstant('CRAFT_BASE_PATH', dirname(realpath($_SERVER['SCRIPT_FILENAME']), 2))
-          ->defineConstant('CRAFT_TEMPLATES_PATH', CRAFT_BASE_PATH . '/src/templates')
+          ->define('CRAFT_VENDOR_PATH', dirname(__DIR__, 3))
+          ->define('CRAFT_BASE_PATH', dirname(realpath($_SERVER['SCRIPT_FILENAME']), $this->depth + 1))
+          ->define('CRAFT_TEMPLATES_PATH', CRAFT_BASE_PATH . '/src/templates')
           ->dotEnv();
 
         return require CRAFT_VENDOR_PATH . '/craftcms/cms/bootstrap/' . $type . '.php';
     }
 
-    public function defineConstant($name, $value)
+    public function define($name, $value)
     {
         if (!defined($name)) {
             define($name, $value);
         }
+
+        return $this;
+    }
+
+    public function setDepth($depth)
+    {
+        $this->depth = $depth;
 
         return $this;
     }
@@ -56,6 +63,6 @@ class Bootstrap extends BaseObject
             error_log($e->getMessage());
         }
 
-        return $this->defineConstant('CRAFT_ENVIRONMENT', Environment::get('CRAFT_ENVIRONMENT', 'production'));
+        return $this->define('CRAFT_ENVIRONMENT', Environment::get('CRAFT_ENVIRONMENT', 'production'));
     }
 }
