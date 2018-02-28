@@ -39,7 +39,7 @@ class Bootstrap
         return require CRAFT_VENDOR_PATH . '/craftcms/cms/bootstrap/' . $type . '.php';
     }
 
-    public function define(string $name, $value): object
+    public function define(string $name, $value): Bootstrap
     {
         if (!defined($name)) {
             define($name, $value);
@@ -48,14 +48,14 @@ class Bootstrap
         return $this;
     }
 
-    public function setDepth(int $depth): object
+    public function setDepth(int $depth): Bootstrap
     {
         $this->depth = $depth;
 
         return $this;
     }
 
-    public function dotEnv(string $path = CRAFT_BASE_PATH, string $file = '.env'): object
+    public function dotEnv(string $path = CRAFT_BASE_PATH, string $file = '.env'): Bootstrap
     {
         $dotenv = new Dotenv($path, $file);
 
