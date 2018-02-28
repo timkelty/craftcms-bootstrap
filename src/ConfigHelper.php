@@ -9,35 +9,37 @@ use yii\web\Request;
 class ConfigHelper
 {
     const ENV_PREFIX = 'CRAFT_';
+
+    /** @var Request */
     private static $request;
 
-    public static function getEnv($name, $default = null, $envPrefix = self::ENV_PREFIX)
+    public static function getEnv(string $name, string $default = null, string $envPrefix = self::ENV_PREFIX): string
     {
         $envVar = Stringy::create($name)->underscored()->toUpperCase()->prepend($envPrefix);
 
         return Environment::get($envVar, $default);
     }
 
-    public static function mapConfig($config, $envPrefix = self::ENV_PREFIX)
+    public static function mapConfig(array $config, string $envPrefix = self::ENV_PREFIX): array
     {
         return Collection::make($config)->map(function ($value, $name) use ($envPrefix) {
             return static::getEnv($name, $value, $envPrefix);
         })->all();
     }
 
-    public static function mapMultiEnvConfig($config, $envPrefix = self::ENV_PREFIX)
+    public static function mapMultiEnvConfig(array $config, string $envPrefix = self::ENV_PREFIX): array
     {
         return Collection::make($config)->map(function ($config, $envName) use ($envPrefix) {
             return static::mapConfig($config, $envPrefix);
         })->all();
     }
 
-    public static function getHeader($name)
+    public static function getHeader(string $name): string
     {
         return static::getRequest()->getHeaders()->get($name);
     }
 
-    private function getRequest()
+    private function getRequest(): Request
     {
         return static::$request = static::$request ?? new Request;
     }

@@ -6,23 +6,25 @@ use Dotenv\Dotenv;
 
 class Bootstrap
 {
-    protected $depth = 1;
-    protected $instance;
     const TYPES = ['web', 'console'];
+
+    /** @var int */
+    protected $depth = 1;
+
+    /** @var Bootstrap */
+    protected $instance;
 
     public function __construct()
     {
         $this->instance = $this;
-
-        return $this;
     }
 
-    public static function getInstance()
+    public static function getInstance(): Bootstrap
     {
         return static::$instance ?? new static;
     }
 
-    public function getApp($type = 'web')
+    public function getApp(string $type = 'web')
     {
         if (!in_array($type, static::TYPES)) {
             throw new \Exception(sprintf('"%s" is not a valid type.', $type));
@@ -37,7 +39,7 @@ class Bootstrap
         return require CRAFT_VENDOR_PATH . '/craftcms/cms/bootstrap/' . $type . '.php';
     }
 
-    public function define($name, $value)
+    public function define(string $name, $value): object
     {
         if (!defined($name)) {
             define($name, $value);
@@ -46,14 +48,14 @@ class Bootstrap
         return $this;
     }
 
-    public function setDepth($depth)
+    public function setDepth(int $depth): object
     {
         $this->depth = $depth;
 
         return $this;
     }
 
-    public function dotEnv($path = CRAFT_BASE_PATH, $file = '.env')
+    public function dotEnv(string $path = CRAFT_BASE_PATH, string $file = '.env'): object
     {
         $dotenv = new Dotenv($path, $file);
 
