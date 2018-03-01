@@ -1,5 +1,7 @@
 # Craft CMS Bootstrap
 
+[Class Reference / API Documentation](./docs/api)
+
 - Provides methods to streamline your Craft CMS bootstrapping process.
 - Provides helpers to automatically retrieve Craft config settings from environment variables.
 
