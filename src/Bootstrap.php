@@ -9,37 +9,6 @@ use yii\base\Application;
  * Craft CMS bootstrap
  *
  * Use this class in your entry script (`index.php`) to bootstrap your app.
- *
- * Example console app at `bin/craft`:
- *
- * ```php
- * <?php
- * use fusionary\craftcms\bootstrap\Bootstrap;
- * require_once dirname(__DIR__) . '/vendor/composer/autoload.php';
- * exit(Bootstrap::getInstance()->getApp('console')->run());
- * ```
- *
- * Example web app at `public/index.php`:
- *
- * ```php
- * <?php
- * use fusionary\craftcms\bootstrap\Bootstrap;
- * require_once dirname(__DIR__) . '/vendor/composer/autoload.php';
- * Bootstrap::getInstance()->getApp()->run();
- * ```
- *
- * Example multi-site web app at `public/site-handle/index.php`:
- *
- * ```php
- * <?php
- *  use fusionary\craftcms\bootstrap\Bootstrap;
- *  require_once dirname(__DIR__, 2) . '/vendor/composer/autoload.php';
- *  Bootstrap::getInstance()
- *      ->setDepth(2)
- *      ->define('CRAFT_SITE', basename(__DIR__))
- *      ->getApp()
- *      ->run();
- * ```
  */
 
 class Bootstrap
@@ -83,10 +52,10 @@ class Bootstrap
     /**
      * Get the bootstrapped app.
      *
-     * @param  string      $type One of [static::$appTypes], deaults to 'web'.
+     * @param  string      $type One of [[$this->appTypes]], deaults to 'web'.
      * @return Application
      */
-    public function getApp(string $type = TYPE_WEB): Application
+    public function getApp(string $type = self::APP_TYPE_WEB): Application
     {
         if (!in_array($type, static::$appTypes)) {
             throw new \Exception(sprintf('"%s" is not a valid type.', $type));

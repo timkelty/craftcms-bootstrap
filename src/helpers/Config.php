@@ -11,22 +11,6 @@ use yii\web\Request;
  *
  * Use this class in your config files to dynamically
  * map environment variables to Craft settings.
- *
- * Example: `config/general.php`
- *
- * ```php
- * // export CRAFT_ALLOW_AUTO_UPDATES=true;
- * use fusionary\craftcms\bootstrap\helpers\Config;
- *
- * return Config::mapMultiEnvConfig([
- *     '*' => [
- *         'allowAutoUpdates' => true,
- *     ],
- *     'production' => [
- *         'allowAutoUpdates' => false,
- *     ]
- * ]); // → ['*' => ['allowAutoUpdates' => true], 'production' => ['allowAutoUpdates' => true]]
- * ```
  */
 class Config
 {
@@ -112,7 +96,7 @@ class Config
      *
      * @see https://craftcms.com/docs/multi-environment-configs
      * @param  array  $config    Multi-environment config
-     * @param  string $envPrefix Environment variable prefix (e.g. CRAFT_)
+     * @param  string $envPrefix Environment variable prefix (e.g. 'CRAFT_')
      * @return array             $config, with existing env vars mapped
      */
     public static function mapMultiEnvConfig(array $config, string $envPrefix = self::ENV_PREFIX): array

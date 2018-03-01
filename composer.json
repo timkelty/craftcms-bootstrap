@@ -1,6 +1,7 @@
 {
   "name": "fusionary/craftcms-bootstrap",
   "description": "Craft CMS Bootstrap",
+  "docs": "https://github.com/timkelty/craftcms-bootstrap/",
   "license": "MIT",
   "keywords": [
     "craft",
@@ -19,5 +20,8 @@
     "psr-4": {
       "fusionary\\craftcms\\bootstrap\\": "src/"
     }
+  },
+  "scripts": {
+    "build-docs": "apidoc api src docs/api --page-title='Craft CMS Bootstrap'"
   }
 }
