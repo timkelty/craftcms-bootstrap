@@ -1,6 +1,7 @@
 # Craft CMS Bootstrap
 
-Provides you with methods to streamline your Craft CMS bootstrapping process.
+- Provides methods to streamline your Craft CMS bootstrapping process.
+- Provides helpers to automatically retrieve Craft config settings from environment variables.
 
 ## Installation
 
@@ -11,17 +12,9 @@ composer require fusionary/craftcms-bootstrap
 
 ## Usage Examples
 
-### Console app at `bin/craft`:
+### Web app
 
-```php
-<?php
-use fusionary\craftcms\bootstrap\Bootstrap;
-require_once dirname(__DIR__) . '/vendor/composer/autoload.php';
-exit(Bootstrap::getInstance()->getApp('console')->run());
-```
-
-### Web app at `public/index.php`:
-
+`public/index.php`
 ```php
 <?php
 use fusionary\craftcms\bootstrap\Bootstrap;
@@ -29,8 +22,9 @@ require_once dirname(__DIR__) . '/vendor/composer/autoload.php';
 Bootstrap::getInstance()->getApp()->run();
 ```
 
-### Multi-site web app at `public/site-handle/index.php`:
+### Multi-site web app
 
+`public/site-handle/index.php`
 ```php
 <?php
  use fusionary\craftcms\bootstrap\Bootstrap;
@@ -42,9 +36,21 @@ Bootstrap::getInstance()->getApp()->run();
      ->run();
 ```
 
-### `config/general.php`
+### Console app:
 
+`bin/craft`
 ```php
+<?php
+use fusionary\craftcms\bootstrap\Bootstrap;
+require_once dirname(__DIR__) . '/vendor/composer/autoload.php';
+exit(Bootstrap::getInstance()->getApp('console')->run());
+```
+
+### Dynamically loading config from environment variables
+
+`config/general.php`
+```php
+<?php
 // export CRAFT_ALLOW_AUTO_UPDATES=true;
 use fusionary\craftcms\bootstrap\helpers\Config;
 
