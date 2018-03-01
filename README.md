@@ -12,7 +12,7 @@ Within your Craft 3 project:
 composer require fusionary/craftcms-bootstrap
 ```
 
-## Usage Examples
+## Usage
 
 ### Web app
 
