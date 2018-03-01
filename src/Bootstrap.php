@@ -98,6 +98,16 @@ class Bootstrap
     }
 
     /**
+     * Define the CRAFT_SITE constant
+     * @param  string    $handle site handle
+     * @return Bootstrap
+     */
+    public function setSite(string $handle): Bootstrap
+    {
+        return $this->define('CRAFT_SITE', $handle);
+    }
+
+    /**
      * Apply environment variables from .env file and defines CRAFT_ENVIRONMENT constant.
      *
      * Fails silently if
