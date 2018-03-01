@@ -1,6 +1,6 @@
 # Craft CMS Bootstrap
 
-[Class Reference / API Documentation](http://htmlpreview.github.io/?https://github.com/timkelty/craftcms-bootstrap/blob/master/docs/api/index.html)
+[Class Reference / API Documentation](http://htmlpreview.github.io/?https://github.com/timkelty/craftcms-bootstrap/blob/master/docs/api/fusionary-craftcms-bootstrap-bootstrap.html)
 
 - Provides chainable methods to streamline your Craft CMS bootstrapping process.
 - Provides helpers to automatically retrieve Craft config settings from environment variables.
