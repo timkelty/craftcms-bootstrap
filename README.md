@@ -18,7 +18,7 @@
 composer require fusionary/craftcms-bootstrap
 ```
 
-## Usage
+## Examples
 
 ### Web app
 
