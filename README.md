@@ -38,7 +38,7 @@ Bootstrap::getInstance()->getApp()->run();
      ->run();
 ```
 
-### Console app:
+### Console app
 
 `bin/craft`
 ```php
