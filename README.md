@@ -39,7 +39,7 @@ Bootstrap::getInstance()->getApp()->run();
  require_once dirname(__DIR__, 2) . '/vendor/autoload.php';
  Bootstrap::getInstance()
      ->setDepth(2)
-     ->setSite('site-handle') // or use basename(__DIR__)
+     ->setSite('site-handle') // or use basename(__DIR__) if the containing folder matches the site handle
      ->getApp()
      ->run();
 ```
@@ -56,10 +56,17 @@ exit(Bootstrap::getInstance()->getApp('console')->run());
 
 ### Dynamically loading config from environment variables
 
+Passing your config through `Config::mapMultiEnvConfig` or `Config::mapConfig`
+will map all settings to corresponding environment variables (if they exist).
+
+Settings assumed to be camel-case, while environment variables are snake-cake
+and all-caps, with prefix (e.g. **CRAFT_**, **DB_**).
+
 `config/general.php`
 ```php
 <?php
 // export CRAFT_ALLOW_AUTO_UPDATES=true;
+
 use fusionary\craftcms\bootstrap\helpers\Config;
 
 return Config::mapMultiEnvConfig([
@@ -70,8 +77,51 @@ return Config::mapMultiEnvConfig([
     'production' => [
         'allowAutoUpdates' => false,
     ]
-]); // → ['*' => ['allowAutoUpdates' => true, 'someOtherSetting' => 'foo'], 'production' => ['allowAutoUpdates' => true]]
+]);
+
+// [
+//  '*' => [
+//    'allowAutoUpdates' => true,
+//    'someOtherSetting' => 'foo'
+//  ],
+//  'production' => [
+//    'allowAutoUpdates' => true
+//  ]
+// ]
 ```
+
+`config/db.php`
+```php
+<?php
+// export DB_DRIVER=mysql
+// export DB_SERVER=mysql
+// export DB_USER=my_app_user
+// export DB_PASSWORD=secret
+// export DB_DATABASE=my_app_production
+// export DB_SCHEMA=public
+
+use fusionary\craftcms\bootstrap\helpers\Config;
+
+return Config::mapConfig([
+  'driver' => null,
+  'server' => null,
+  'user' => null,
+  'password' => null,
+  'database' => null,
+  'schema' => null,
+], 'DB_');
+
+// [
+//   'driver' => 'mysql',
+//   'server' => 'mysql',
+//   'user' => 'my_app_user',
+//   'password' => 'secret',
+//   'database' => 'my_app_production',
+//   'schema' => 'public',
+// ]
+```
+
+
 ## Generate documentation
 
 ```
