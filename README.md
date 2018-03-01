@@ -3,5 +3,5 @@
 ## Generate documentation
 
 ```
-rm -rf ./docs/api && apidoc api src docs/api
+apidoc api src docs/api
 ```

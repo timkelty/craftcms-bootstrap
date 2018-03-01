@@ -9,14 +9,14 @@ use yii\web\Request;
 /**
  * Bootstrap Config Helper
  *
- * Use this class in your config files (general.php, etc.) to dynamically
+ * Use this class in your config files to dynamically
  * map environment variables to Craft settings.
  *
  * Example: `config/general.php`
+ *
  * ```php
  * // export CRAFT_ALLOW_AUTO_UPDATES=true;
- *
- * use fusionary\craftcms\bootstrap\helpers\config;
+ * use fusionary\craftcms\bootstrap\helpers\Config;
  *
  * return Config::mapMultiEnvConfig([
  *     '*' => [
@@ -38,7 +38,7 @@ class Config
     /**
      * @var Request Instance of yii\web\Request
      */
-    private static $request;
+    protected static $request;
 
     /**
      * Get the value of an environment variable based on a config setting.
@@ -46,14 +46,16 @@ class Config
      * using Cekurte\Environment.
      *
      * ```php
+     * use fusionary\craftcms\bootstrap\helpers\Config;
+     *
      * // export CRAFT_DEV_MODE=true
-     * ConfigHelper::getEnv('devMode', false); // → (bool) true
+     * Config::getEnv('devMode', false); // → (bool) true
      *
      * // export CRAFT_MY_SETTING=someSetting
-     * ConfigHelper::getEnv('mySetting'); // → (string) 'someSetting'
+     * Config::getEnv('mySetting'); // → (string) 'someSetting'
      *
      * // export PLUGIN_MY_SETTING=100
-     * ConfigHelper::getEnv('mySetting', null, 'PLUGIN_'); // → (int) 100
+     * Config::getEnv('mySetting', null, 'PLUGIN_'); // → (int) 100
      * ```
      *
      * @see https://github.com/jpcercal/environment#examples
@@ -74,8 +76,9 @@ class Config
      *
      * ```php
      * // export CRAFT_TEST_TO_EMAIL_ADDRESS=user@domain.com
+     * use fusionary\craftcms\bootstrap\helpers\Config;
      *
-     * $config = ConfigHelper::mapConfig([
+     * $config = Config::mapConfig([
      *     'testToEmailAddress' => null,
      *     'securityKey' => 'dev-key',
      * ]); // → ['testToEmailAddress' => 'user@domain.com', 'securityKey' => 'dev-key']
@@ -139,7 +142,7 @@ class Config
      *
      * @return Request
      */
-    private function getRequest(): Request
+    protected function getRequest(): Request
     {
         return static::$request = static::$request ?? new Request;
     }

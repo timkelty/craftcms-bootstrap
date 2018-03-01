@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="language" content="en" />
+        <link href="./assets/ed6bc22e/css/bootstrap.css" rel="stylesheet">
+<link href="./assets/623cdf16/solarized_light.css" rel="stylesheet">
+<link href="./assets/b0aecb9c/style.css" rel="stylesheet">
+<script src="./assets/c653865d/jquery.js"></script>
+<script src="./assets/ed6bc22e/js/bootstrap.js"></script>
+<script src="./assets/90c8f4bd/jssearch.js"></script>    <title>Bootstrap, fusionary\craftcms\bootstrap\Bootstrap - Yii Framework 2.0 API Documentation</title>
+</head>
+<body>
+
+<div class="wrap">
+    <nav id="w2" class="navbar-inverse navbar-fixed-top navbar"><div class="navbar-header"><button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#w2-collapse"><span class="sr-only">Toggle navigation</span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span></button><a class="navbar-brand" href="./index.html">Yii Framework 2.0 API Documentation</a></div><div id="w2-collapse" class="collapse navbar-collapse"><ul id="w3" class="navbar-nav nav"><li><a href="./index.html">Class reference</a></li></ul><div class="navbar-form navbar-left" role="search">
+  <div class="form-group">
+    <input id="searchbox" type="text" class="form-control" placeholder="Search">
+  </div>
+</div>
+</div></nav>
+    <div id="search-resultbox" style="display: none;" class="modal-content">
+        <ul id="search-results">
+        </ul>
+    </div>
+
+    
+<div class="row">
+    <div class="col-md-3">
+                <div id="navigation" class="list-group"><a class="list-group-item active" href="#navigation-0" data-toggle="collapse" data-parent="#navigation">fusionary\craftcms\bootstrap <b class="caret"></b></a><div id="navigation-0" class="submenu panel-collapse collapse in"><a class="list-group-item active" href="./fusionary-craftcms-bootstrap-bootstrap.html">Bootstrap</a></div>
+<a class="list-group-item" href="#navigation-1" data-toggle="collapse" data-parent="#navigation">fusionary\craftcms\bootstrap\helpers <b class="caret"></b></a><div id="navigation-1" class="submenu panel-collapse collapse"><a class="list-group-item" href="./fusionary-craftcms-bootstrap-helpers-config.html">Config</a></div></div>    </div>
+    <div class="col-md-9 api-content" role="main">
+        <h1>Class fusionary\craftcms\bootstrap\Bootstrap</h1>
+<div class="top-nav">
+    <a href="index.html">All Classes</a>
+            | <a href="#properties">Properties</a>
+                | <a href="#methods">Methods</a>
+                    | <a href="#constants">Constants</a>
+    </div>
+
+<table class="summaryTable docClass table table-bordered">
+    <colgroup>
+        <col class="col-name" />
+        <col class="col-value" />
+    </colgroup>
+            <tr><th>Inheritance</th><td><a href="fusionary-craftcms-bootstrap-bootstrap.html">fusionary\craftcms\bootstrap\Bootstrap</a></td></tr>
+                                        </table>
+
+<div class="class-description">
+    <p><strong>Craft CMS bootstrap</strong></p>
+    <p>Use this class in your entry script (<code>index.php</code>) to bootstrap your app.</p>
+<p>Example console app at <code>bin/craft</code>:</p>
+<pre><code class="hljs php language-php"><span class="hljs-preprocessor">&lt;?php</span>
+<span class="hljs-keyword">use</span> <span class="hljs-title">fusionary</span>\<span class="hljs-title">craftcms</span>\<span class="hljs-title">bootstrap</span>\<span class="hljs-title">Bootstrap</span>;
+<span class="hljs-keyword">require_once</span> dirname(<span class="hljs-keyword">__DIR__</span>) . <span class="hljs-string">'/vendor/composer/autoload.php'</span>;
+<span class="hljs-keyword">exit</span>(Bootstrap::getInstance()-&gt;getApp(<span class="hljs-string">'console'</span>)-&gt;run());
+</code></pre>
+<p>Example web app at <code>public/index.php</code>:</p>
+<pre><code class="hljs php language-php"><span class="hljs-preprocessor">&lt;?php</span>
+<span class="hljs-keyword">use</span> <span class="hljs-title">fusionary</span>\<span class="hljs-title">craftcms</span>\<span class="hljs-title">bootstrap</span>\<span class="hljs-title">Bootstrap</span>;
+<span class="hljs-keyword">require_once</span> dirname(<span class="hljs-keyword">__DIR__</span>) . <span class="hljs-string">'/vendor/composer/autoload.php'</span>;
+Bootstrap::getInstance()-&gt;getApp()-&gt;run();
+</code></pre>
+<p>Example multi-site web app at <code>public/site-handle/index.php</code>:</p>
+<pre><code class="hljs php language-php"><span class="hljs-preprocessor">&lt;?php</span>
+ <span class="hljs-keyword">use</span> <span class="hljs-title">fusionary</span>\<span class="hljs-title">craftcms</span>\<span class="hljs-title">bootstrap</span>\<span class="hljs-title">Bootstrap</span>;
+ <span class="hljs-keyword">require_once</span> dirname(<span class="hljs-keyword">__DIR__</span>, <span class="hljs-number">2</span>) . <span class="hljs-string">'/vendor/composer/autoload.php'</span>;
+ Bootstrap::getInstance()
+     -&gt;setDepth(<span class="hljs-number">2</span>)
+     -&gt;define(<span class="hljs-string">'CRAFT_SITE'</span>, basename(<span class="hljs-keyword">__DIR__</span>))
+     -&gt;getApp()
+     -&gt;run();
+</code></pre>
+
+    </div>
+
+<a id="properties"></a>
+
+<div class="summary doc-property">
+<h2>Protected Properties</h2>
+
+<p><a href="#" class="toggle">Hide inherited properties</a></p>
+
+<table class="summary-table table table-striped table-bordered table-hover">
+<colgroup>
+    <col class="col-property" />
+    <col class="col-type" />
+    <col class="col-description" />
+    <col class="col-defined" />
+</colgroup>
+<tr>
+  <th>Property</th><th>Type</th><th>Description</th><th>Defined By</th>
+</tr>
+        <tr id="$appTypes">
+        <td><a href="fusionary-craftcms-bootstrap-bootstrap.html#$appTypes-detail">$appTypes</a></td>
+        <td><a href="http://www.php.net/language.types.array">array</a></td>
+        <td>Valid application type.</td>
+        <td><a href="fusionary-craftcms-bootstrap-bootstrap.html">fusionary\craftcms\bootstrap\Bootstrap</a></td>
+    </tr>
+            <tr id="$depth">
+        <td><a href="fusionary-craftcms-bootstrap-bootstrap.html#$depth-detail">$depth</a></td>
+        <td><a href="http://www.php.net/language.types.integer">integer</a></td>
+        <td>Depth of running script from project root.</td>
+        <td><a href="fusionary-craftcms-bootstrap-bootstrap.html">fusionary\craftcms\bootstrap\Bootstrap</a></td>
+    </tr>
+            <tr id="$instance">
+        <td><a href="fusionary-craftcms-bootstrap-bootstrap.html#$instance-detail">$instance</a></td>
+        <td><a href="fusionary-craftcms-bootstrap-bootstrap.html">fusionary\craftcms\bootstrap\Bootstrap</a></td>
+        <td>Singleton instance of this class.</td>
+        <td><a href="fusionary-craftcms-bootstrap-bootstrap.html">fusionary\craftcms\bootstrap\Bootstrap</a></td>
+    </tr>
+    </table>
+</div>
+
+<a id="methods"></a>
+
+<div class="summary doc-method">
+<h2>Public Methods</h2>
+
+<p><a href="#" class="toggle">Hide inherited methods</a></p>
+
+<table class="summary-table table table-striped table-bordered table-hover">
+<colgroup>
+    <col class="col-method" />
+    <col class="col-description" />
+    <col class="col-defined" />
+</colgroup>
+<tr>
+  <th>Method</th><th>Description</th><th>Defined By</th>
+</tr>
+            <tr id="define()">
+        <td><a href="fusionary-craftcms-bootstrap-bootstrap.html#define()-detail">define()</a></td>
+        <td>Gracefully define a PHP constant.</td>
+        <td><a href="fusionary-craftcms-bootstrap-bootstrap.html">fusionary\craftcms\bootstrap\Bootstrap</a></td>
+    </tr>
+            <tr id="dotEnv()">
+        <td><a href="fusionary-craftcms-bootstrap-bootstrap.html#dotEnv()-detail">dotEnv()</a></td>
+        <td>Apply environment variables from .env file and defines CRAFT_ENVIRONMENT constant.</td>
+        <td><a href="fusionary-craftcms-bootstrap-bootstrap.html">fusionary\craftcms\bootstrap\Bootstrap</a></td>
+    </tr>
+            <tr id="getApp()">
+        <td><a href="fusionary-craftcms-bootstrap-bootstrap.html#getApp()-detail">getApp()</a></td>
+        <td>Get the bootstrapped app.</td>
+        <td><a href="fusionary-craftcms-bootstrap-bootstrap.html">fusionary\craftcms\bootstrap\Bootstrap</a></td>
+    </tr>
+            <tr id="getInstance()">
+        <td><a href="fusionary-craftcms-bootstrap-bootstrap.html#getInstance()-detail">getInstance()</a></td>
+        <td>Get instance of this class.</td>
+        <td><a href="fusionary-craftcms-bootstrap-bootstrap.html">fusionary\craftcms\bootstrap\Bootstrap</a></td>
+    </tr>
+            <tr id="setDepth()">
+        <td><a href="fusionary-craftcms-bootstrap-bootstrap.html#setDepth()-detail">setDepth()</a></td>
+        <td>Set depth from project root</td>
+        <td><a href="fusionary-craftcms-bootstrap-bootstrap.html">fusionary\craftcms\bootstrap\Bootstrap</a></td>
+    </tr>
+    </table>
+</div>
+
+<div class="summary doc-method">
+<h2>Protected Methods</h2>
+
+<p><a href="#" class="toggle">Hide inherited methods</a></p>
+
+<table class="summary-table table table-striped table-bordered table-hover">
+<colgroup>
+    <col class="col-method" />
+    <col class="col-description" />
+    <col class="col-defined" />
+</colgroup>
+<tr>
+  <th>Method</th><th>Description</th><th>Defined By</th>
+</tr>
+        <tr id="__construct()">
+        <td><a href="fusionary-craftcms-bootstrap-bootstrap.html#__construct()-detail">__construct()</a></td>
+        <td>Set instance.</td>
+        <td><a href="fusionary-craftcms-bootstrap-bootstrap.html">fusionary\craftcms\bootstrap\Bootstrap</a></td>
+    </tr>
+                        </table>
+</div>
+
+<a id="events"></a>
+
+<a id="constants"></a>
+<div class="summary doc-const">
+    <h2>Constants</h2>
+
+    <p><a href="#" class="toggle">Hide inherited constants</a></p>
+
+    <table class="summary-table table table-striped table-bordered table-hover">
+    <colgroup>
+        <col class="col-const" />
+        <col class="col-value" />
+        <col class="col-description" />
+        <col class="col-defined" />
+    </colgroup>
+    <tr>
+        <th>Constant</th><th>Value</th><th>Description</th><th>Defined By</th>
+    </tr>
+            <tr id="APP_TYPE_CONSOLE">
+          <td id="APP_TYPE_CONSOLE-detail">APP_TYPE_CONSOLE</td>
+          <td>'console'</td>
+          <td>
+                        </td>
+          <td><a href="fusionary-craftcms-bootstrap-bootstrap.html">fusionary\craftcms\bootstrap\Bootstrap</a></td>
+        </tr>
+            <tr id="APP_TYPE_WEB">
+          <td id="APP_TYPE_WEB-detail">APP_TYPE_WEB</td>
+          <td>'web'</td>
+          <td>
+                        </td>
+          <td><a href="fusionary-craftcms-bootstrap-bootstrap.html">fusionary\craftcms\bootstrap\Bootstrap</a></td>
+        </tr>
+        </table>
+</div>
+
+<h2>Property Details</h2>
+
+<div class="property-doc">
+
+    <div class="detail-header h3" id="$appTypes-detail">
+        <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
+        <a class="tool-link hash" href="fusionary-craftcms-bootstrap-bootstrap.html#$appTypes-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+        
+        $appTypes        <span class="detail-header-tag small">
+            protected            static                                    property
+                    </span>
+    </div>
+
+    
+    <div class="doc-description">
+        <p>Valid application type.</p>
+
+        <p>See also <a href="http://www.yiiframework.com/doc-2.0/guide-structure-applications.html#applications">http://www.yiiframework.com/doc-2.0/guide-structure-applications.html#applications</a>.</p>    </div>
+
+    <div class="signature"><span class="signature-defs">protected static</span> <span class="signature-type"><a href="http://www.php.net/language.types.array">array</a></span> <a href="fusionary-craftcms-bootstrap-bootstrap.html#$appTypes-detail">$appTypes</a> <span style="color: #0000BB"></span><span style="color: #007700">=&nbsp;[</span><span style="color: #0000BB">self</span><span style="color: #007700">::</span><span style="color: #0000BB">APP_TYPE_WEB</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">self</span><span style="color: #007700">::</span><span style="color: #0000BB">APP_TYPE_CONSOLE</span><span style="color: #007700">]</span></div>
+
+
+    <div class="detail-header h3" id="$depth-detail">
+        <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
+        <a class="tool-link hash" href="fusionary-craftcms-bootstrap-bootstrap.html#$depth-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+        
+        $depth        <span class="detail-header-tag small">
+            protected                                                property
+                    </span>
+    </div>
+
+    
+    <div class="doc-description">
+        <p>Depth of running script from project root.</p>
+
+            </div>
+
+    <div class="signature"><span class="signature-defs">protected</span> <span class="signature-type"><a href="http://www.php.net/language.types.integer">integer</a></span> <a href="fusionary-craftcms-bootstrap-bootstrap.html#$depth-detail">$depth</a> <span style="color: #0000BB"></span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">1</span></div>
+
+
+    <div class="detail-header h3" id="$instance-detail">
+        <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
+        <a class="tool-link hash" href="fusionary-craftcms-bootstrap-bootstrap.html#$instance-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+        
+        $instance        <span class="detail-header-tag small">
+            protected            static                                    property
+                    </span>
+    </div>
+
+    
+    <div class="doc-description">
+        <p>Singleton instance of this class.</p>
+
+            </div>
+
+    <div class="signature"><span class="signature-defs">protected static</span> <span class="signature-type"><a href="fusionary-craftcms-bootstrap-bootstrap.html">fusionary\craftcms\bootstrap\Bootstrap</a></span> <a href="fusionary-craftcms-bootstrap-bootstrap.html#$instance-detail">$instance</a> <span style="color: #0000BB"></span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">null</span></div>
+
+</div>
+<h2>Method Details</h2>
+
+<div class="method-doc">
+
+    <div class="detail-header h3" id="__construct()-detail">
+        <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
+        <a class="tool-link hash" href="fusionary-craftcms-bootstrap-bootstrap.html#__construct()-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+        
+        __construct()
+        <span class="detail-header-tag small">
+            protected                                    method
+                    </span>
+    </div>
+
+    
+    <div class="doc-description">
+        <p><strong>Set instance.</strong></p>
+
+        
+            </div>
+
+    <table class="detail-table table table-striped table-bordered table-hover">
+        <tr><td colspan="3" class="signature"><span class="signature-defs">protected</span> <span class="signature-type">void</span> <strong><a href="fusionary-craftcms-bootstrap-bootstrap.html#__construct()-detail">__construct</a></strong> ( )</td></tr>
+            </table>
+
+<!--	-->
+
+    <div class="detail-header h3" id="define()-detail">
+        <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
+        <a class="tool-link hash" href="fusionary-craftcms-bootstrap-bootstrap.html#define()-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+        
+        define()
+        <span class="detail-header-tag small">
+            public                                    method
+                    </span>
+    </div>
+
+    
+    <div class="doc-description">
+        <p><strong>Gracefully define a PHP constant.</strong></p>
+
+        
+            </div>
+
+    <table class="detail-table table table-striped table-bordered table-hover">
+        <tr><td colspan="3" class="signature"><span class="signature-defs">public</span> <span class="signature-type"><a href="fusionary-craftcms-bootstrap-bootstrap.html">fusionary\craftcms\bootstrap\Bootstrap</a></span> <strong><a href="fusionary-craftcms-bootstrap-bootstrap.html#define()-detail">define</a></strong> ( <span class="signature-type">\fusionary\craftcms\bootstrap\string</span> <span style="color: #0000BB">$name</span>, <span style="color: #0000BB">$value</span> )</td></tr>
+                                    <tr>
+                  <td class="param-name-col"><span style="color: #0000BB">$name</span></td>
+                  <td class="param-type-col"><a href="http://www.php.net/language.types.string">string</a></td>
+                  <td class="param-desc-col"></td>
+                </tr>
+                            <tr>
+                  <td class="param-name-col"><span style="color: #0000BB">$value</span></td>
+                  <td class="param-type-col">mixed</td>
+                  <td class="param-desc-col"></td>
+                </tr>
+                                                </table>
+
+<!--	-->
+
+    <div class="detail-header h3" id="dotEnv()-detail">
+        <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
+        <a class="tool-link hash" href="fusionary-craftcms-bootstrap-bootstrap.html#dotEnv()-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+        
+        dotEnv()
+        <span class="detail-header-tag small">
+            public                                    method
+                    </span>
+    </div>
+
+    
+    <div class="doc-description">
+        <p><strong>Apply environment variables from .env file and defines CRAFT_ENVIRONMENT constant.</strong></p>
+
+        <p>Fails silently if</p>
+<ul>
+<li>env file is not found (e.g. in production).</li>
+<li><code>CRAFT_ENVIRONMENT</code> is already defined.</li>
+</ul>
+
+            </div>
+
+    <table class="detail-table table table-striped table-bordered table-hover">
+        <tr><td colspan="3" class="signature"><span class="signature-defs">public</span> <span class="signature-type"><a href="fusionary-craftcms-bootstrap-bootstrap.html">fusionary\craftcms\bootstrap\Bootstrap</a></span> <strong><a href="fusionary-craftcms-bootstrap-bootstrap.html#dotEnv()-detail">dotEnv</a></strong> ( <span class="signature-type">\fusionary\craftcms\bootstrap\string</span> <span style="color: #0000BB">$path&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">CRAFT_BASE_PATH</span>, <span class="signature-type">\fusionary\craftcms\bootstrap\string</span> <span style="color: #0000BB">$file&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'.env'</span>, <span style="color: #0000BB">$logExceptions&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">false</span> )</td></tr>
+                                    <tr>
+                  <td class="param-name-col"><span style="color: #0000BB">$path</span></td>
+                  <td class="param-type-col"><a href="http://www.php.net/language.types.string">string</a></td>
+                  <td class="param-desc-col"><p>Path to directory containing env file</p>
+</td>
+                </tr>
+                            <tr>
+                  <td class="param-name-col"><span style="color: #0000BB">$file</span></td>
+                  <td class="param-type-col"><a href="http://www.php.net/language.types.string">string</a></td>
+                  <td class="param-desc-col"><p>Filename of env file</p>
+</td>
+                </tr>
+                            <tr>
+                  <td class="param-name-col"><span style="color: #0000BB">$logExceptions</span></td>
+                  <td class="param-type-col"><a href="http://www.php.net/language.types.boolean">boolean</a></td>
+                  <td class="param-desc-col"><p>Log exceptions with error_log</p>
+</td>
+                </tr>
+                                                </table>
+
+<!--	-->
+
+    <div class="detail-header h3" id="getApp()-detail">
+        <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
+        <a class="tool-link hash" href="fusionary-craftcms-bootstrap-bootstrap.html#getApp()-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+        
+        getApp()
+        <span class="detail-header-tag small">
+            public                                    method
+                    </span>
+    </div>
+
+    
+    <div class="doc-description">
+        <p><strong>Get the bootstrapped app.</strong></p>
+
+        
+            </div>
+
+    <table class="detail-table table table-striped table-bordered table-hover">
+        <tr><td colspan="3" class="signature"><span class="signature-defs">public</span> <span class="signature-type">\yii\base\Application</span> <strong><a href="fusionary-craftcms-bootstrap-bootstrap.html#getApp()-detail">getApp</a></strong> ( <span class="signature-type">\fusionary\craftcms\bootstrap\string</span> <span style="color: #0000BB">$type&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">TYPE_WEB</span> )</td></tr>
+                                    <tr>
+                  <td class="param-name-col"><span style="color: #0000BB">$type</span></td>
+                  <td class="param-type-col"><a href="http://www.php.net/language.types.string">string</a></td>
+                  <td class="param-desc-col"><p>One of [static::$appTypes], deaults to 'web'.</p>
+</td>
+                </tr>
+                                                </table>
+
+<!--	-->
+
+    <div class="detail-header h3" id="getInstance()-detail">
+        <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
+        <a class="tool-link hash" href="fusionary-craftcms-bootstrap-bootstrap.html#getInstance()-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+        
+        getInstance()
+        <span class="detail-header-tag small">
+            public                        static            method
+                    </span>
+    </div>
+
+    
+    <div class="doc-description">
+        <p><strong>Get instance of this class.</strong></p>
+
+        
+            </div>
+
+    <table class="detail-table table table-striped table-bordered table-hover">
+        <tr><td colspan="3" class="signature"><span class="signature-defs">public static</span> <span class="signature-type"><a href="fusionary-craftcms-bootstrap-bootstrap.html">fusionary\craftcms\bootstrap\Bootstrap</a></span> <strong><a href="fusionary-craftcms-bootstrap-bootstrap.html#getInstance()-detail">getInstance</a></strong> ( )</td></tr>
+            </table>
+
+<!--	-->
+
+    <div class="detail-header h3" id="setDepth()-detail">
+        <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
+        <a class="tool-link hash" href="fusionary-craftcms-bootstrap-bootstrap.html#setDepth()-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+        
+        setDepth()
+        <span class="detail-header-tag small">
+            public                                    method
+                    </span>
+    </div>
+
+    
+    <div class="doc-description">
+        <p><strong>Set depth from project root</strong></p>
+
+        
+            </div>
+
+    <table class="detail-table table table-striped table-bordered table-hover">
+        <tr><td colspan="3" class="signature"><span class="signature-defs">public</span> <span class="signature-type"><a href="fusionary-craftcms-bootstrap-bootstrap.html">fusionary\craftcms\bootstrap\Bootstrap</a></span> <strong><a href="fusionary-craftcms-bootstrap-bootstrap.html#setDepth()-detail">setDepth</a></strong> ( <span class="signature-type">\fusionary\craftcms\bootstrap\int</span> <span style="color: #0000BB">$depth</span> )</td></tr>
+                                    <tr>
+                  <td class="param-name-col"><span style="color: #0000BB">$depth</span></td>
+                  <td class="param-type-col"><a href="http://www.php.net/language.types.integer">integer</a></td>
+                  <td class="param-desc-col"></td>
+                </tr>
+                                                </table>
+
+<!--	-->
+</div>
+        </div>
+</div>
+
+<script type="text/javascript">
+    /*<![CDATA[*/
+    $("a.toggle").on('click', function () {
+        var $this = $(this);
+        if ($this.hasClass('properties-hidden')) {
+            $this.text($this.text().replace(/Show/,'Hide'));
+            $this.parents(".summary").find(".inherited").show();
+            $this.removeClass('properties-hidden');
+        } else {
+            $this.text($this.text().replace(/Hide/,'Show'));
+            $this.parents(".summary").find(".inherited").hide();
+            $this.addClass('properties-hidden');
+        }
+
+        return false;
+    });
+    /*
+     $(".sourceCode a.show").toggle(function () {
+     $(this).text($(this).text().replace(/show/,'hide'));
+     $(this).parents(".sourceCode").find("div.code").show();
+     },function () {
+     $(this).text($(this).text().replace(/hide/,'show'));
+     $(this).parents(".sourceCode").find("div.code").hide();
+     });
+     $("a.sourceLink").click(function () {
+     $(this).attr('target','_blank');
+     });
+     */
+    /*]]>*/
+</script>
+
+
+</div>
+
+<footer class="footer">
+        <p class="pull-right"><small>Page generated on Thu, 01 Mar 2018 17:08:55 +0000</small></p>
+    Powered by <a href="http://www.yiiframework.com/" rel="external">Yii Framework</a></footer>
+
+<script>jQuery(function ($) {
+    var shiftWindow = function () { scrollBy(0, -50) };
+    if (location.hash) setTimeout(shiftWindow, 1);
+    window.addEventListener("hashchange", shiftWindow);
+var element = document.createElement("script");
+element.src = "./jssearch.index.js";
+document.body.appendChild(element);
+
+var searchBox = $('#searchbox');
+
+// search when typing in search field
+searchBox.on("keyup", function(event) {
+    var query = $(this).val();
+
+    if (query == '' || event.which == 27) {
+        $('#search-resultbox').hide();
+        return;
+    } else if (event.which == 13) {
+        var selectedLink = $('#search-resultbox a.selected');
+        if (selectedLink.length != 0) {
+            document.location = selectedLink.attr('href');
+            return;
+        }
+    } else if (event.which == 38 || event.which == 40) {
+        $('#search-resultbox').show();
+
+        var selected = $('#search-resultbox a.selected');
+        if (selected.length == 0) {
+            $('#search-results').find('a').first().addClass('selected');
+        } else {
+            var next;
+            if (event.which == 40) {
+                next = selected.parent().next().find('a').first();
+            } else {
+                next = selected.parent().prev().find('a').first();
+            }
+            if (next.length != 0) {
+                var resultbox = $('#search-results');
+                var position = next.position();
+
+//              TODO scrolling is buggy and jumps around
+//                resultbox.scrollTop(Math.floor(position.top));
+//                console.log(position.top);
+
+                selected.removeClass('selected');
+                next.addClass('selected');
+            }
+        }
+
+        return;
+    }
+    $('#search-resultbox').show();
+    $('#search-results').html('<li><span class="no-results">No results</span></li>');
+
+    var result = jssearch.search(query);
+
+    if (result.length > 0) {
+        var i = 0;
+        var resHtml = '';
+
+        for (var key in result) {
+            if (i++ > 20) {
+                break;
+            }
+            resHtml = resHtml +
+            '<li><a href="' + result[key].file.u.substr(3) +'"><span class="title">' + result[key].file.t + '</span>' +
+            '<span class="description">' + result[key].file.d + '</span></a></li>';
+        }
+        $('#search-results').html(resHtml);
+    }
+});
+
+// hide the search results on ESC
+$(document).on("keyup", function(event) { if (event.which == 27) { $('#search-resultbox').hide(); } });
+// hide search results on click to document
+$(document).bind('click', function (e) { $('#search-resultbox').hide(); });
+// except the following:
+searchBox.bind('click', function(e) { e.stopPropagation(); });
+$('#search-resultbox').bind('click', function(e) { e.stopPropagation(); });
+
+});</script></body>
+</html>

@@ -3,12 +3,12 @@ namespace fusionary\craftcms\bootstrap;
 
 use Cekurte\Environment\Environment;
 use Dotenv\Dotenv;
-use \yii\base\Application;
+use yii\base\Application;
 
 /**
  * Craft CMS bootstrap
  *
- * Use this class in your entry script (index.php) to bootstrap your app.
+ * Use this class in your entry script (`index.php`) to bootstrap your app.
  *
  * Example console app at `bin/craft`:
  *
@@ -61,17 +61,18 @@ class Bootstrap
     /**
      * @var Bootstrap Singleton instance of this class.
      */
-    protected $instance;
+    protected static $instance;
 
     /**
      * Set instance.
      */
-    public function __construct()
+    protected function __construct()
     {
         $this->instance = $this;
     }
 
     /**
+     * Get instance of this class.
      * @return Bootstrap
      */
     public static function getInstance(): Bootstrap
@@ -81,6 +82,7 @@ class Bootstrap
 
     /**
      * Get the bootstrapped app.
+     *
      * @param  string      $type One of [static::$appTypes], deaults to 'web'.
      * @return Application
      */
@@ -127,7 +129,7 @@ class Bootstrap
     }
 
     /**
-     * Apply dotenv and defines CRAFT_ENVIRONMENT constant.
+     * Apply environment variables from .env file and defines CRAFT_ENVIRONMENT constant.
      *
      * Fails silently if
      * - env file is not found (e.g. in production).

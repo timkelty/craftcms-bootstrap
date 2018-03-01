@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="language" content="en" />
+        <link href="./assets/ed6bc22e/css/bootstrap.css" rel="stylesheet">
+<link href="./assets/623cdf16/solarized_light.css" rel="stylesheet">
+<link href="./assets/b0aecb9c/style.css" rel="stylesheet">
+<script src="./assets/c653865d/jquery.js"></script>
+<script src="./assets/ed6bc22e/js/bootstrap.js"></script>
+<script src="./assets/90c8f4bd/jssearch.js"></script>    <title>Config, fusionary\craftcms\bootstrap\helpers\Config - Yii Framework 2.0 API Documentation</title>
+</head>
+<body>
+
+<div class="wrap">
+    <nav id="w6" class="navbar-inverse navbar-fixed-top navbar"><div class="navbar-header"><button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#w6-collapse"><span class="sr-only">Toggle navigation</span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span></button><a class="navbar-brand" href="./index.html">Yii Framework 2.0 API Documentation</a></div><div id="w6-collapse" class="collapse navbar-collapse"><ul id="w7" class="navbar-nav nav"><li><a href="./index.html">Class reference</a></li></ul><div class="navbar-form navbar-left" role="search">
+  <div class="form-group">
+    <input id="searchbox" type="text" class="form-control" placeholder="Search">
+  </div>
+</div>
+</div></nav>
+    <div id="search-resultbox" style="display: none;" class="modal-content">
+        <ul id="search-results">
+        </ul>
+    </div>
+
+    
+<div class="row">
+    <div class="col-md-3">
+                <div id="navigation" class="list-group"><a class="list-group-item" href="#navigation-4" data-toggle="collapse" data-parent="#navigation">fusionary\craftcms\bootstrap <b class="caret"></b></a><div id="navigation-4" class="submenu panel-collapse collapse"><a class="list-group-item" href="./fusionary-craftcms-bootstrap-bootstrap.html">Bootstrap</a></div>
+<a class="list-group-item active" href="#navigation-5" data-toggle="collapse" data-parent="#navigation">fusionary\craftcms\bootstrap\helpers <b class="caret"></b></a><div id="navigation-5" class="submenu panel-collapse collapse in"><a class="list-group-item active" href="./fusionary-craftcms-bootstrap-helpers-config.html">Config</a></div></div>    </div>
+    <div class="col-md-9 api-content" role="main">
+        <h1>Class fusionary\craftcms\bootstrap\helpers\Config</h1>
+<div class="top-nav">
+    <a href="index.html">All Classes</a>
+            | <a href="#properties">Properties</a>
+                | <a href="#methods">Methods</a>
+                    | <a href="#constants">Constants</a>
+    </div>
+
+<table class="summaryTable docClass table table-bordered">
+    <colgroup>
+        <col class="col-name" />
+        <col class="col-value" />
+    </colgroup>
+            <tr><th>Inheritance</th><td><a href="fusionary-craftcms-bootstrap-helpers-config.html">fusionary\craftcms\bootstrap\helpers\Config</a></td></tr>
+                                        </table>
+
+<div class="class-description">
+    <p><strong>Bootstrap Config Helper</strong></p>
+    <p>Use this class in your config files to dynamically
+map environment variables to Craft settings.</p>
+<p>Example: <code>config/general.php</code></p>
+<pre><code class="hljs php language-php"><span class="hljs-comment">// export CRAFT_ALLOW_AUTO_UPDATES=true;</span>
+<span class="hljs-keyword">use</span> <span class="hljs-title">fusionary</span>\<span class="hljs-title">craftcms</span>\<span class="hljs-title">bootstrap</span>\<span class="hljs-title">helpers</span>\<span class="hljs-title">Config</span>;
+
+<span class="hljs-keyword">return</span> Config::mapMultiEnvConfig([
+    <span class="hljs-string">'*'</span> =&gt; [
+        <span class="hljs-string">'allowAutoUpdates'</span> =&gt; <span class="hljs-keyword">true</span>,
+    ],
+    <span class="hljs-string">'production'</span> =&gt; [
+        <span class="hljs-string">'allowAutoUpdates'</span> =&gt; <span class="hljs-keyword">false</span>,
+    ]
+]); <span class="hljs-comment">// → ['*' =&gt; ['allowAutoUpdates' =&gt; true], 'production' =&gt; ['allowAutoUpdates' =&gt; true]]</span>
+</code></pre>
+
+    </div>
+
+<a id="properties"></a>
+
+<div class="summary doc-property">
+<h2>Protected Properties</h2>
+
+<p><a href="#" class="toggle">Hide inherited properties</a></p>
+
+<table class="summary-table table table-striped table-bordered table-hover">
+<colgroup>
+    <col class="col-property" />
+    <col class="col-type" />
+    <col class="col-description" />
+    <col class="col-defined" />
+</colgroup>
+<tr>
+  <th>Property</th><th>Type</th><th>Description</th><th>Defined By</th>
+</tr>
+        <tr id="$request">
+        <td><a href="fusionary-craftcms-bootstrap-helpers-config.html#$request-detail">$request</a></td>
+        <td>\yii\web\Request</td>
+        <td>Instance of yii\web\Request</td>
+        <td><a href="fusionary-craftcms-bootstrap-helpers-config.html">fusionary\craftcms\bootstrap\helpers\Config</a></td>
+    </tr>
+    </table>
+</div>
+
+<a id="methods"></a>
+
+<div class="summary doc-method">
+<h2>Public Methods</h2>
+
+<p><a href="#" class="toggle">Hide inherited methods</a></p>
+
+<table class="summary-table table table-striped table-bordered table-hover">
+<colgroup>
+    <col class="col-method" />
+    <col class="col-description" />
+    <col class="col-defined" />
+</colgroup>
+<tr>
+  <th>Method</th><th>Description</th><th>Defined By</th>
+</tr>
+        <tr id="getEnv()">
+        <td><a href="fusionary-craftcms-bootstrap-helpers-config.html#getEnv()-detail">getEnv()</a></td>
+        <td>Get the value of an environment variable based on a config setting.</td>
+        <td><a href="fusionary-craftcms-bootstrap-helpers-config.html">fusionary\craftcms\bootstrap\helpers\Config</a></td>
+    </tr>
+            <tr id="getHeader()">
+        <td><a href="fusionary-craftcms-bootstrap-helpers-config.html#getHeader()-detail">getHeader()</a></td>
+        <td>Get request headers</td>
+        <td><a href="fusionary-craftcms-bootstrap-helpers-config.html">fusionary\craftcms\bootstrap\helpers\Config</a></td>
+    </tr>
+                <tr id="mapConfig()">
+        <td><a href="fusionary-craftcms-bootstrap-helpers-config.html#mapConfig()-detail">mapConfig()</a></td>
+        <td>Map config array to matching environment variables</td>
+        <td><a href="fusionary-craftcms-bootstrap-helpers-config.html">fusionary\craftcms\bootstrap\helpers\Config</a></td>
+    </tr>
+            <tr id="mapMultiEnvConfig()">
+        <td><a href="fusionary-craftcms-bootstrap-helpers-config.html#mapMultiEnvConfig()-detail">mapMultiEnvConfig()</a></td>
+        <td>Map a multi-environment config to matching environment variables</td>
+        <td><a href="fusionary-craftcms-bootstrap-helpers-config.html">fusionary\craftcms\bootstrap\helpers\Config</a></td>
+    </tr>
+    </table>
+</div>
+
+<div class="summary doc-method">
+<h2>Protected Methods</h2>
+
+<p><a href="#" class="toggle">Hide inherited methods</a></p>
+
+<table class="summary-table table table-striped table-bordered table-hover">
+<colgroup>
+    <col class="col-method" />
+    <col class="col-description" />
+    <col class="col-defined" />
+</colgroup>
+<tr>
+  <th>Method</th><th>Description</th><th>Defined By</th>
+</tr>
+                <tr id="getRequest()">
+        <td><a href="fusionary-craftcms-bootstrap-helpers-config.html#getRequest()-detail">getRequest()</a></td>
+        <td>Get request instance</td>
+        <td><a href="fusionary-craftcms-bootstrap-helpers-config.html">fusionary\craftcms\bootstrap\helpers\Config</a></td>
+    </tr>
+            </table>
+</div>
+
+<a id="events"></a>
+
+<a id="constants"></a>
+<div class="summary doc-const">
+    <h2>Constants</h2>
+
+    <p><a href="#" class="toggle">Hide inherited constants</a></p>
+
+    <table class="summary-table table table-striped table-bordered table-hover">
+    <colgroup>
+        <col class="col-const" />
+        <col class="col-value" />
+        <col class="col-description" />
+        <col class="col-defined" />
+    </colgroup>
+    <tr>
+        <th>Constant</th><th>Value</th><th>Description</th><th>Defined By</th>
+    </tr>
+            <tr id="ENV_PREFIX">
+          <td id="ENV_PREFIX-detail">ENV_PREFIX</td>
+          <td>'CRAFT_'</td>
+          <td>
+                        </td>
+          <td><a href="fusionary-craftcms-bootstrap-helpers-config.html">fusionary\craftcms\bootstrap\helpers\Config</a></td>
+        </tr>
+        </table>
+</div>
+
+<h2>Property Details</h2>
+
+<div class="property-doc">
+
+    <div class="detail-header h3" id="$request-detail">
+        <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
+        <a class="tool-link hash" href="fusionary-craftcms-bootstrap-helpers-config.html#$request-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+        
+        $request        <span class="detail-header-tag small">
+            protected            static                                    property
+                    </span>
+    </div>
+
+    
+    <div class="doc-description">
+        <p>Instance of yii\web\Request</p>
+
+            </div>
+
+    <div class="signature"><span class="signature-defs">protected static</span> <span class="signature-type">\yii\web\Request</span> <a href="fusionary-craftcms-bootstrap-helpers-config.html#$request-detail">$request</a> <span style="color: #0000BB"></span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">null</span></div>
+
+</div>
+<h2>Method Details</h2>
+
+<div class="method-doc">
+
+    <div class="detail-header h3" id="getEnv()-detail">
+        <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
+        <a class="tool-link hash" href="fusionary-craftcms-bootstrap-helpers-config.html#getEnv()-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+        
+        getEnv()
+        <span class="detail-header-tag small">
+            public                        static            method
+                    </span>
+    </div>
+
+    
+    <div class="doc-description">
+        <p><strong>Get the value of an environment variable based on a config setting.</strong></p>
+
+        <p>Values are converted to converted to their respective data types
+using Cekurte\Environment.</p>
+<pre><code class="hljs php language-php"><span class="hljs-keyword">use</span> <span class="hljs-title">fusionary</span>\<span class="hljs-title">craftcms</span>\<span class="hljs-title">bootstrap</span>\<span class="hljs-title">helpers</span>\<span class="hljs-title">Config</span>;
+
+<span class="hljs-comment">// export CRAFT_DEV_MODE=true</span>
+Config::getEnv(<span class="hljs-string">'devMode'</span>, <span class="hljs-keyword">false</span>); <span class="hljs-comment">// → (bool) true</span>
+
+<span class="hljs-comment">// export CRAFT_MY_SETTING=someSetting</span>
+Config::getEnv(<span class="hljs-string">'mySetting'</span>); <span class="hljs-comment">// → (string) 'someSetting'</span>
+
+<span class="hljs-comment">// export PLUGIN_MY_SETTING=100</span>
+Config::getEnv(<span class="hljs-string">'mySetting'</span>, <span class="hljs-keyword">null</span>, <span class="hljs-string">'PLUGIN_'</span>); <span class="hljs-comment">// → (int) 100</span>
+</code></pre>
+
+        <p>See also <a href="https://github.com/jpcercal/environment#examples">https://github.com/jpcercal/environment#examples</a>.</p>    </div>
+
+    <table class="detail-table table table-striped table-bordered table-hover">
+        <tr><td colspan="3" class="signature"><span class="signature-defs">public static</span> <span class="signature-type">mixed</span> <strong><a href="fusionary-craftcms-bootstrap-helpers-config.html#getEnv()-detail">getEnv</a></strong> ( <span class="signature-type">\fusionary\craftcms\bootstrap\helpers\string</span> <span style="color: #0000BB">$name</span>, <span class="signature-type">\fusionary\craftcms\bootstrap\helpers\string</span> <span style="color: #0000BB">$default&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">null</span>, <span class="signature-type">\fusionary\craftcms\bootstrap\helpers\string</span> <span style="color: #0000BB">$envPrefix&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">self</span><span style="color: #007700">::</span><span style="color: #0000BB">ENV_PREFIX</span> )</td></tr>
+                                    <tr>
+                  <td class="param-name-col"><span style="color: #0000BB">$name</span></td>
+                  <td class="param-type-col"><a href="http://www.php.net/language.types.string">string</a></td>
+                  <td class="param-desc-col"><p>Config setting name (camel-cased)</p>
+</td>
+                </tr>
+                            <tr>
+                  <td class="param-name-col"><span style="color: #0000BB">$default</span></td>
+                  <td class="param-type-col"><a href="http://www.php.net/language.types.string">string</a>|<a href="http://www.php.net/language.types.null">null</a></td>
+                  <td class="param-desc-col"><p>Default value</p>
+</td>
+                </tr>
+                            <tr>
+                  <td class="param-name-col"><span style="color: #0000BB">$envPrefix</span></td>
+                  <td class="param-type-col"><a href="http://www.php.net/language.types.string">string</a></td>
+                  <td class="param-desc-col"><p>Environment variable prefix (e.g. CRAFT_)</p>
+</td>
+                </tr>
+                                        <tr>
+                  <th class="param-name-col">return</th>
+                  <td class="param-type-col">mixed</td>
+                  <td class="param-desc-col"><p>Converted value, or the $default if not found</p>
+</td>
+                </tr>
+                                    </table>
+
+<!--	-->
+
+    <div class="detail-header h3" id="getHeader()-detail">
+        <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
+        <a class="tool-link hash" href="fusionary-craftcms-bootstrap-helpers-config.html#getHeader()-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+        
+        getHeader()
+        <span class="detail-header-tag small">
+            public                        static            method
+                    </span>
+    </div>
+
+    
+    <div class="doc-description">
+        <p><strong>Get request headers</strong></p>
+
+        
+            </div>
+
+    <table class="detail-table table table-striped table-bordered table-hover">
+        <tr><td colspan="3" class="signature"><span class="signature-defs">public static</span> <span class="signature-type"><a href="http://www.php.net/language.types.string">string</a></span> <strong><a href="fusionary-craftcms-bootstrap-helpers-config.html#getHeader()-detail">getHeader</a></strong> ( <span class="signature-type">\fusionary\craftcms\bootstrap\helpers\string</span> <span style="color: #0000BB">$name</span> )</td></tr>
+                                    <tr>
+                  <td class="param-name-col"><span style="color: #0000BB">$name</span></td>
+                  <td class="param-type-col"><a href="http://www.php.net/language.types.string">string</a></td>
+                  <td class="param-desc-col"><p>Header name</p>
+</td>
+                </tr>
+                                        <tr>
+                  <th class="param-name-col">return</th>
+                  <td class="param-type-col"><a href="http://www.php.net/language.types.string">string</a></td>
+                  <td class="param-desc-col"><p>Header value</p>
+</td>
+                </tr>
+                                    </table>
+
+<!--	-->
+
+    <div class="detail-header h3" id="getRequest()-detail">
+        <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
+        <a class="tool-link hash" href="fusionary-craftcms-bootstrap-helpers-config.html#getRequest()-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+        
+        getRequest()
+        <span class="detail-header-tag small">
+            protected                                    method
+                    </span>
+    </div>
+
+    
+    <div class="doc-description">
+        <p><strong>Get request instance</strong></p>
+
+        <p>Note: this retrieves an instance of yii\web\Request in an un-bootstraped
+state, so be cautious with its use. In this case, we only use it to read
+HTTP request headers whilc bootstrapping our app.</p>
+
+            </div>
+
+    <table class="detail-table table table-striped table-bordered table-hover">
+        <tr><td colspan="3" class="signature"><span class="signature-defs">protected</span> <span class="signature-type">\yii\web\Request</span> <strong><a href="fusionary-craftcms-bootstrap-helpers-config.html#getRequest()-detail">getRequest</a></strong> ( )</td></tr>
+            </table>
+
+<!--	-->
+
+    <div class="detail-header h3" id="mapConfig()-detail">
+        <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
+        <a class="tool-link hash" href="fusionary-craftcms-bootstrap-helpers-config.html#mapConfig()-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+        
+        mapConfig()
+        <span class="detail-header-tag small">
+            public                        static            method
+                    </span>
+    </div>
+
+    
+    <div class="doc-description">
+        <p><strong>Map config array to matching environment variables</strong></p>
+
+        <pre><code class="hljs php language-php"><span class="hljs-comment">// export CRAFT_TEST_TO_EMAIL_ADDRESS=user@domain.com</span>
+<span class="hljs-keyword">use</span> <span class="hljs-title">fusionary</span>\<span class="hljs-title">craftcms</span>\<span class="hljs-title">bootstrap</span>\<span class="hljs-title">helpers</span>\<span class="hljs-title">Config</span>;
+
+<span class="hljs-variable">$config</span> = Config::mapConfig([
+    <span class="hljs-string">'testToEmailAddress'</span> =&gt; <span class="hljs-keyword">null</span>,
+    <span class="hljs-string">'securityKey'</span> =&gt; <span class="hljs-string">'dev-key'</span>,
+]); <span class="hljs-comment">// → ['testToEmailAddress' =&gt; 'user@domain.com', 'securityKey' =&gt; 'dev-key']</span>
+</code></pre>
+
+            </div>
+
+    <table class="detail-table table table-striped table-bordered table-hover">
+        <tr><td colspan="3" class="signature"><span class="signature-defs">public static</span> <span class="signature-type"><a href="http://www.php.net/language.types.array">array</a></span> <strong><a href="fusionary-craftcms-bootstrap-helpers-config.html#mapConfig()-detail">mapConfig</a></strong> ( <span class="signature-type"><a href="http://www.php.net/language.types.array">array</a></span> <span style="color: #0000BB">$config</span>, <span class="signature-type">\fusionary\craftcms\bootstrap\helpers\string</span> <span style="color: #0000BB">$envPrefix&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">self</span><span style="color: #007700">::</span><span style="color: #0000BB">ENV_PREFIX</span> )</td></tr>
+                                    <tr>
+                  <td class="param-name-col"><span style="color: #0000BB">$config</span></td>
+                  <td class="param-type-col"><a href="http://www.php.net/language.types.array">array</a></td>
+                  <td class="param-desc-col"></td>
+                </tr>
+                            <tr>
+                  <td class="param-name-col"><span style="color: #0000BB">$envPrefix</span></td>
+                  <td class="param-type-col"><a href="http://www.php.net/language.types.string">string</a></td>
+                  <td class="param-desc-col"><p>Environment variable prefix (e.g. CRAFT_)</p>
+</td>
+                </tr>
+                                        <tr>
+                  <th class="param-name-col">return</th>
+                  <td class="param-type-col"><a href="http://www.php.net/language.types.array">array</a></td>
+                  <td class="param-desc-col"><p>$config, with existing env vars mapped.</p>
+</td>
+                </tr>
+                                    </table>
+
+<!--	-->
+
+    <div class="detail-header h3" id="mapMultiEnvConfig()-detail">
+        <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
+        <a class="tool-link hash" href="fusionary-craftcms-bootstrap-helpers-config.html#mapMultiEnvConfig()-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+        
+        mapMultiEnvConfig()
+        <span class="detail-header-tag small">
+            public                        static            method
+                    </span>
+    </div>
+
+    
+    <div class="doc-description">
+        <p><strong>Map a multi-environment config to matching environment variables</strong></p>
+
+        <pre><code class="hljs php language-php"><span class="hljs-comment">// export CRAFT_ALLOW_AUTO_UPDATES=true</span>
+ConfigHelper::mapMultiEnvConfig([
+    <span class="hljs-string">'*'</span> =&gt; [
+        <span class="hljs-string">'allowAutoUpdates'</span> =&gt; <span class="hljs-keyword">true</span>,
+    ],
+    <span class="hljs-string">'production'</span> =&gt; [
+        <span class="hljs-string">'allowAutoUpdates'</span> =&gt; <span class="hljs-keyword">false</span>,
+    ]
+]); <span class="hljs-comment">// → ['*' =&gt; ['allowAutoUpdates' =&gt; true], 'production' =&gt; ['allowAutoUpdates' =&gt; true]]</span>
+</code></pre>
+
+        <p>See also <a href="https://craftcms.com/docs/multi-environment-configs">https://craftcms.com/docs/multi-environment-configs</a>.</p>    </div>
+
+    <table class="detail-table table table-striped table-bordered table-hover">
+        <tr><td colspan="3" class="signature"><span class="signature-defs">public static</span> <span class="signature-type"><a href="http://www.php.net/language.types.array">array</a></span> <strong><a href="fusionary-craftcms-bootstrap-helpers-config.html#mapMultiEnvConfig()-detail">mapMultiEnvConfig</a></strong> ( <span class="signature-type"><a href="http://www.php.net/language.types.array">array</a></span> <span style="color: #0000BB">$config</span>, <span class="signature-type">\fusionary\craftcms\bootstrap\helpers\string</span> <span style="color: #0000BB">$envPrefix&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">self</span><span style="color: #007700">::</span><span style="color: #0000BB">ENV_PREFIX</span> )</td></tr>
+                                    <tr>
+                  <td class="param-name-col"><span style="color: #0000BB">$config</span></td>
+                  <td class="param-type-col"><a href="http://www.php.net/language.types.array">array</a></td>
+                  <td class="param-desc-col"><p>Multi-environment config</p>
+</td>
+                </tr>
+                            <tr>
+                  <td class="param-name-col"><span style="color: #0000BB">$envPrefix</span></td>
+                  <td class="param-type-col"><a href="http://www.php.net/language.types.string">string</a></td>
+                  <td class="param-desc-col"><p>Environment variable prefix (e.g. CRAFT_)</p>
+</td>
+                </tr>
+                                        <tr>
+                  <th class="param-name-col">return</th>
+                  <td class="param-type-col"><a href="http://www.php.net/language.types.array">array</a></td>
+                  <td class="param-desc-col"><p>$config, with existing env vars mapped</p>
+</td>
+                </tr>
+                                    </table>
+
+<!--	-->
+</div>
+        </div>
+</div>
+
+<script type="text/javascript">
+    /*<![CDATA[*/
+    $("a.toggle").on('click', function () {
+        var $this = $(this);
+        if ($this.hasClass('properties-hidden')) {
+            $this.text($this.text().replace(/Show/,'Hide'));
+            $this.parents(".summary").find(".inherited").show();
+            $this.removeClass('properties-hidden');
+        } else {
+            $this.text($this.text().replace(/Hide/,'Show'));
+            $this.parents(".summary").find(".inherited").hide();
+            $this.addClass('properties-hidden');
+        }
+
+        return false;
+    });
+    /*
+     $(".sourceCode a.show").toggle(function () {
+     $(this).text($(this).text().replace(/show/,'hide'));
+     $(this).parents(".sourceCode").find("div.code").show();
+     },function () {
+     $(this).text($(this).text().replace(/hide/,'show'));
+     $(this).parents(".sourceCode").find("div.code").hide();
+     });
+     $("a.sourceLink").click(function () {
+     $(this).attr('target','_blank');
+     });
+     */
+    /*]]>*/
+</script>
+
+
+</div>
+
+<footer class="footer">
+        <p class="pull-right"><small>Page generated on Thu, 01 Mar 2018 17:08:55 +0000</small></p>
+    Powered by <a href="http://www.yiiframework.com/" rel="external">Yii Framework</a></footer>
+
+<script>jQuery(function ($) {
+    var shiftWindow = function () { scrollBy(0, -50) };
+    if (location.hash) setTimeout(shiftWindow, 1);
+    window.addEventListener("hashchange", shiftWindow);
+var element = document.createElement("script");
+element.src = "./jssearch.index.js";
+document.body.appendChild(element);
+
+var searchBox = $('#searchbox');
+
+// search when typing in search field
+searchBox.on("keyup", function(event) {
+    var query = $(this).val();
+
+    if (query == '' || event.which == 27) {
+        $('#search-resultbox').hide();
+        return;
+    } else if (event.which == 13) {
+        var selectedLink = $('#search-resultbox a.selected');
+        if (selectedLink.length != 0) {
+            document.location = selectedLink.attr('href');
+            return;
+        }
+    } else if (event.which == 38 || event.which == 40) {
+        $('#search-resultbox').show();
+
+        var selected = $('#search-resultbox a.selected');
+        if (selected.length == 0) {
+            $('#search-results').find('a').first().addClass('selected');
+        } else {
+            var next;
+            if (event.which == 40) {
+                next = selected.parent().next().find('a').first();
+            } else {
+                next = selected.parent().prev().find('a').first();
+            }
+            if (next.length != 0) {
+                var resultbox = $('#search-results');
+                var position = next.position();
+
+//              TODO scrolling is buggy and jumps around
+//                resultbox.scrollTop(Math.floor(position.top));
+//                console.log(position.top);
+
+                selected.removeClass('selected');
+                next.addClass('selected');
+            }
+        }
+
+        return;
+    }
+    $('#search-resultbox').show();
+    $('#search-results').html('<li><span class="no-results">No results</span></li>');
+
+    var result = jssearch.search(query);
+
+    if (result.length > 0) {
+        var i = 0;
+        var resHtml = '';
+
+        for (var key in result) {
+            if (i++ > 20) {
+                break;
+            }
+            resHtml = resHtml +
+            '<li><a href="' + result[key].file.u.substr(3) +'"><span class="title">' + result[key].file.t + '</span>' +
+            '<span class="description">' + result[key].file.d + '</span></a></li>';
+        }
+        $('#search-results').html(resHtml);
+    }
+});
+
+// hide the search results on ESC
+$(document).on("keyup", function(event) { if (event.which == 27) { $('#search-resultbox').hide(); } });
+// hide search results on click to document
+$(document).bind('click', function (e) { $('#search-resultbox').hide(); });
+// except the following:
+searchBox.bind('click', function(e) { e.stopPropagation(); });
+$('#search-resultbox').bind('click', function(e) { e.stopPropagation(); });
+
+});</script></body>
+</html>
