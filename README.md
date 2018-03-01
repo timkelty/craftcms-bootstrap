@@ -65,13 +65,13 @@ use fusionary\craftcms\bootstrap\helpers\Config;
 return Config::mapMultiEnvConfig([
     '*' => [
         'allowAutoUpdates' => true,
+        'someOtherSetting' => 'foo',
     ],
     'production' => [
         'allowAutoUpdates' => false,
     ]
-]); // → ['*' => ['allowAutoUpdates' => true], 'production' => ['allowAutoUpdates' => true]]
+]); // → ['*' => ['allowAutoUpdates' => true, 'someOtherSetting' => 'foo'], 'production' => ['allowAutoUpdates' => true]]
 ```
-
 ## Generate documentation
 
 ```
