@@ -2,6 +2,11 @@
   "name": "fusionary/craftcms-bootstrap",
   "description": "Craft CMS Bootstrap",
   "license": "MIT",
+  "keywords": [
+    "craft",
+    "bootstrap",
+    "yii"
+  ],
   "require": {
     "php": ">=7.0.0",
     "illuminate/support": "^5.6",
