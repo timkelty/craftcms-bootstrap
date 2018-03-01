@@ -26,7 +26,7 @@ composer require fusionary/craftcms-bootstrap
 ```php
 <?php
 use fusionary\craftcms\bootstrap\Bootstrap;
-require_once dirname(__DIR__) . '/vendor/composer/autoload.php';
+require_once dirname(__DIR__) . '/vendor/autoload.php';
 Bootstrap::getInstance()->getApp()->run();
 ```
 
@@ -36,7 +36,7 @@ Bootstrap::getInstance()->getApp()->run();
 ```php
 <?php
  use fusionary\craftcms\bootstrap\Bootstrap;
- require_once dirname(__DIR__, 2) . '/vendor/composer/autoload.php';
+ require_once dirname(__DIR__, 2) . '/vendor/autoload.php';
  Bootstrap::getInstance()
      ->setDepth(2)
      ->setSite('site-handle') // or use basename(__DIR__)
@@ -50,7 +50,7 @@ Bootstrap::getInstance()->getApp()->run();
 ```php
 <?php
 use fusionary\craftcms\bootstrap\Bootstrap;
-require_once dirname(__DIR__) . '/vendor/composer/autoload.php';
+require_once dirname(__DIR__) . '/vendor/autoload.php';
 exit(Bootstrap::getInstance()->getApp('console')->run());
 ```
 
