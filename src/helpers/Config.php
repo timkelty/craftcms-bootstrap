@@ -48,7 +48,7 @@ class Config
      * @param  string      $envPrefix Environment variable prefix (e.g. CRAFT_)
      * @return mixed                  Converted value, or the $default if not found
      */
-    public static function getEnv(string $name, string $default = null, string $envPrefix = self::ENV_PREFIX)
+    public static function getEnv(string $name, $default = null, string $envPrefix = self::ENV_PREFIX)
     {
         $envVar = Stringy::create($name)->underscored()->toUpperCase()->prepend($envPrefix);
 
@@ -112,7 +112,7 @@ class Config
      * @param  string $name header name
      * @return string       header value
      */
-    public static function getHeader(string $name): string
+    public static function getHeader(string $name): ?string
     {
         return static::getRequest()->getHeaders()->get($name);
     }

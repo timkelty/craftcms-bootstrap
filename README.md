@@ -8,7 +8,7 @@
 ## Prerequisites
 
 ```
-"php": ">=7.0.0",
+"php": ">=7.1.0",
 "craftcms/cms": "^3.0.0-RC1",
 ```
 
