@@ -75,5 +75,5 @@ return Config::mapMultiEnvConfig([
 ## Generate documentation
 
 ```
-apidoc api src docs/api
+apidoc api src docs/api --page-title="Craft CMS Bootstrap"
 ```
