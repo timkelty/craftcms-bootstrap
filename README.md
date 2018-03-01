@@ -5,9 +5,15 @@
 - Provides methods to streamline your Craft CMS bootstrapping process.
 - Provides helpers to automatically retrieve Craft config settings from environment variables.
 
+## Prerequisites
+
+```
+"php": ">=7.0.0",
+"craftcms/cms": "^3.0.0-RC1",
+```
+
 ## Installation
 
-Within your Craft 3 project:
 ```
 composer require fusionary/craftcms-bootstrap
 ```
