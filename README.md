@@ -2,7 +2,7 @@
 
 [Class Reference / API Documentation](http://htmlpreview.github.io/?https://github.com/timkelty/craftcms-bootstrap/blob/master/docs/api/index.html)
 
-- Provides methods to streamline your Craft CMS bootstrapping process.
+- Provides chainable methods to streamline your Craft CMS bootstrapping process.
 - Provides helpers to automatically retrieve Craft config settings from environment variables.
 
 ## Prerequisites
@@ -39,7 +39,7 @@ Bootstrap::getInstance()->getApp()->run();
  require_once dirname(__DIR__, 2) . '/vendor/composer/autoload.php';
  Bootstrap::getInstance()
      ->setDepth(2)
-     ->define('CRAFT_SITE', basename(__DIR__))
+     ->setSite('site-handle') // or use basename(__DIR__)
      ->getApp()
      ->run();
 ```
