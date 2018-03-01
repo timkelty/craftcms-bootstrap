@@ -5,7 +5,7 @@
     "php": ">=7.0.0",
     "illuminate/support": "^5.6",
     "cekurte/environment": "^0.3.0",
-    "craftcms/cms": "^3.0.0-RC12"
+    "yiisoft/yii2-apidoc": "^2.1"
   },
   "autoload": {
     "psr-4": {
