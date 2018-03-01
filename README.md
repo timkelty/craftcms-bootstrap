@@ -1,6 +1,6 @@
 # Craft CMS Bootstrap
 
-[Class Reference / API Documentation](./docs/api)
+[Class Reference / API Documentation](http://htmlpreview.github.io/?https://github.com/timkelty/craftcms-bootstrap/blob/master/docs/api/index.html)
 
 - Provides methods to streamline your Craft CMS bootstrapping process.
 - Provides helpers to automatically retrieve Craft config settings from environment variables.
