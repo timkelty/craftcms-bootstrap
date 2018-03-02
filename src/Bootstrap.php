@@ -33,15 +33,7 @@ class Bootstrap
     protected static $instance;
 
     /**
-     * Set instance.
-     */
-    protected function __construct()
-    {
-        $this->instance = $this;
-    }
-
-    /**
-     * Get instance of this class.
+     * Get instance statically.
      * @return Bootstrap
      */
     public static function getInstance(): Bootstrap
