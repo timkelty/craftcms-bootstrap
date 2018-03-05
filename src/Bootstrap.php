@@ -63,6 +63,18 @@ class Bootstrap
     }
 
     /**
+     * Get and run the app
+     * @param  string      $type One of [[$appTypes]], deaults to 'web'.
+     * @return int the exit status
+     */
+    public function run(string $type = self::APP_TYPE_WEB): int
+    {
+        return static::getInstance()
+            ->getApp($type)
+            ->run();
+    }
+
+    /**
      * Gracefully define a PHP constant.
      * @param  string    $name
      * @param  mixed     $value
