@@ -25,9 +25,20 @@ class Config
     protected static $request;
 
     /**
+     * Get environment variable value, with default and type conversion.
+     *
+     * @see https://github.com/jpcercal/environment
+     * @param  string $name
+     * @param  mixed  $defaultValue Default value to return if variable is not found
+     * @return mixed
+     */
+    public static function getEnv(string $name, $defaultValue = null)
+    {
+        return Environment::get($name, $defaultValue);
+    }
+
+    /**
      * Get the value of an environment variable based on a config setting.
-     * Values are converted to converted to their respective data types
-     * using Cekurte\Environment.
      *
      * ```php
      * use fusionary\craftcms\bootstrap\helpers\Config;
@@ -42,17 +53,20 @@ class Config
      * Config::getEnv('mySetting', null, 'PLUGIN_'); // → (int) 100
      * ```
      *
-     * @see https://github.com/jpcercal/environment#examples
+     * @see [[static::getEnv]]
      * @param  string      $name      Config setting name (camel-cased)
      * @param  string|null $default   Default value
      * @param  string      $envPrefix Environment variable prefix (e.g. CRAFT_)
      * @return mixed                  Converted value, or the $default if not found
      */
-    public static function getEnv(string $name, $default = null, string $envPrefix = self::ENV_PREFIX)
+    public static function getEnvBySetting(string $name, $default = null, string $prefix = self::ENV_PREFIX)
     {
-        $envVar = Stringy::create($name)->underscored()->toUpperCase()->prepend($envPrefix);
+        $varName = Stringy::create($name)
+            ->underscored()
+            ->toUpperCase()
+            ->prepend($prefix);
 
-        return Environment::get($envVar, $default);
+        return static::getEnv($varName, $default);
     }
 
     /**
@@ -75,7 +89,7 @@ class Config
     public static function mapConfig(array $config, string $envPrefix = self::ENV_PREFIX): array
     {
         return Collection::make($config)->map(function ($value, $name) use ($envPrefix) {
-            return static::getEnv($name, $value, $envPrefix);
+            return static::getEnvBySetting($name, $value, $envPrefix);
         })->all();
     }
 
