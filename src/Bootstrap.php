@@ -107,7 +107,7 @@ class Bootstrap
      * - `CRAFT_ENVIRONMENT` is already defined.
      *
      * @param  string    $path          Path to directory containing env file
-     * @param  string    $file          Filename of env file
+     * @param  string    $fileName          Filename of env file
      * @param  bool      $logExceptions Log exceptions with error_log
      * @return Bootstrap
      */

@@ -25,7 +25,7 @@ composer require fusionary/craftcms-bootstrap
 <?php
 use fusionary\craftcms\bootstrap\Bootstrap;
 require_once dirname(__DIR__) . '/vendor/autoload.php';
-Bootstrap::getInstance()->getApp()->run();
+Bootstrap::getApp()->run();
 ```
 
 ### Multi-site web app

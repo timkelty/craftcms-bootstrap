@@ -14,10 +14,10 @@
 <body>
 
 <div class="wrap">
-    <nav id="w2" class="navbar-inverse navbar-fixed-top navbar"><div class="navbar-header"><button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#w2-collapse"><span class="sr-only">Toggle navigation</span>
+    <nav id="w1" class="navbar-inverse navbar-fixed-top navbar"><div class="navbar-header"><button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#w1-collapse"><span class="sr-only">Toggle navigation</span>
 <span class="icon-bar"></span>
 <span class="icon-bar"></span>
-<span class="icon-bar"></span></button><a class="navbar-brand" href="./index.html">Craft CMS Bootstrap</a></div><div id="w2-collapse" class="collapse navbar-collapse"><ul id="w3" class="navbar-nav nav"><li><a href="./index.html">Class reference</a></li></ul><div class="navbar-form navbar-left" role="search">
+<span class="icon-bar"></span></button><a class="navbar-brand" href="./index.html">Craft CMS Bootstrap</a></div><div id="w1-collapse" class="collapse navbar-collapse"><ul id="w2" class="navbar-nav nav"><li><a href="./index.html">Class reference</a></li></ul><div class="navbar-form navbar-left" role="search">
   <div class="form-group">
     <input id="searchbox" type="text" class="form-control" placeholder="Search">
   </div>
@@ -31,8 +31,7 @@
     
 <div class="row">
     <div class="col-md-3">
-                <div id="navigation" class="list-group"><a class="list-group-item active" href="#navigation-0" data-toggle="collapse" data-parent="#navigation">fusionary\craftcms\bootstrap <b class="caret"></b></a><div id="navigation-0" class="submenu panel-collapse collapse in"><a class="list-group-item active" href="./fusionary-craftcms-bootstrap-bootstrap.html">Bootstrap</a></div>
-<a class="list-group-item" href="#navigation-1" data-toggle="collapse" data-parent="#navigation">fusionary\craftcms\bootstrap\helpers <b class="caret"></b></a><div id="navigation-1" class="submenu panel-collapse collapse"><a class="list-group-item" href="./fusionary-craftcms-bootstrap-helpers-config.html">Config</a></div></div>    </div>
+                <div id="navigation" class="list-group"><a class="list-group-item active" href="#navigation-0" data-toggle="collapse" data-parent="#navigation">fusionary\craftcms\bootstrap <b class="caret"></b></a><div id="navigation-0" class="submenu panel-collapse collapse in"><a class="list-group-item active" href="./fusionary-craftcms-bootstrap-bootstrap.html">Bootstrap</a></div></div>    </div>
     <div class="col-md-9 api-content" role="main">
         <h1>Class fusionary\craftcms\bootstrap\Bootstrap</h1>
 <div class="top-nav">
@@ -88,7 +87,7 @@
             <tr id="$instance">
         <td><a href="fusionary-craftcms-bootstrap-bootstrap.html#$instance-detail">$instance</a></td>
         <td><a href="fusionary-craftcms-bootstrap-bootstrap.html">fusionary\craftcms\bootstrap\Bootstrap</a></td>
-        <td>Singleton instance of this class.</td>
+        <td>Singleton instance.</td>
         <td><a href="fusionary-craftcms-bootstrap-bootstrap.html">fusionary\craftcms\bootstrap\Bootstrap</a></td>
     </tr>
     </table>
@@ -115,19 +114,14 @@
         <td>Gracefully define a PHP constant.</td>
         <td><a href="fusionary-craftcms-bootstrap-bootstrap.html">fusionary\craftcms\bootstrap\Bootstrap</a></td>
     </tr>
-            <tr id="dotEnv()">
-        <td><a href="fusionary-craftcms-bootstrap-bootstrap.html#dotEnv()-detail">dotEnv()</a></td>
-        <td>Apply environment variables from .env file and defines CRAFT_ENVIRONMENT constant.</td>
-        <td><a href="fusionary-craftcms-bootstrap-bootstrap.html">fusionary\craftcms\bootstrap\Bootstrap</a></td>
-    </tr>
             <tr id="getApp()">
         <td><a href="fusionary-craftcms-bootstrap-bootstrap.html#getApp()-detail">getApp()</a></td>
         <td>Get the bootstrapped app.</td>
         <td><a href="fusionary-craftcms-bootstrap-bootstrap.html">fusionary\craftcms\bootstrap\Bootstrap</a></td>
     </tr>
-            <tr id="getInstance()">
-        <td><a href="fusionary-craftcms-bootstrap-bootstrap.html#getInstance()-detail">getInstance()</a></td>
-        <td>Get instance statically.</td>
+                <tr id="loadDotEnv()">
+        <td><a href="fusionary-craftcms-bootstrap-bootstrap.html#loadDotEnv()-detail">loadDotEnv()</a></td>
+        <td>Apply environment variables from a .env file and defines CRAFT_ENVIRONMENT constant.</td>
         <td><a href="fusionary-craftcms-bootstrap-bootstrap.html">fusionary\craftcms\bootstrap\Bootstrap</a></td>
     </tr>
             <tr id="setDepth()">
@@ -137,10 +131,32 @@
     </tr>
             <tr id="setSite()">
         <td><a href="fusionary-craftcms-bootstrap-bootstrap.html#setSite()-detail">setSite()</a></td>
-        <td>Define the CRAFT_SITE constant</td>
+        <td>Define the <code>CRAFT_SITE</code> constant</td>
         <td><a href="fusionary-craftcms-bootstrap-bootstrap.html">fusionary\craftcms\bootstrap\Bootstrap</a></td>
     </tr>
     </table>
+</div>
+
+<div class="summary doc-method">
+<h2>Protected Methods</h2>
+
+<p><a href="#" class="toggle">Hide inherited methods</a></p>
+
+<table class="summary-table table table-striped table-bordered table-hover">
+<colgroup>
+    <col class="col-method" />
+    <col class="col-description" />
+    <col class="col-defined" />
+</colgroup>
+<tr>
+  <th>Method</th><th>Description</th><th>Defined By</th>
+</tr>
+                <tr id="getInstance()">
+        <td><a href="fusionary-craftcms-bootstrap-bootstrap.html#getInstance()-detail">getInstance()</a></td>
+        <td>Get instance statically.</td>
+        <td><a href="fusionary-craftcms-bootstrap-bootstrap.html">fusionary\craftcms\bootstrap\Bootstrap</a></td>
+    </tr>
+                </table>
 </div>
 
 <a id="events"></a>
@@ -205,7 +221,7 @@
         <a class="tool-link hash" href="fusionary-craftcms-bootstrap-bootstrap.html#$depth-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
         
         $depth        <span class="detail-header-tag small">
-            protected                                                property
+            protected            static                                    property
                     </span>
     </div>
 
@@ -215,7 +231,7 @@
 
             </div>
 
-    <div class="signature"><span class="signature-defs">protected</span> <span class="signature-type"><a href="http://www.php.net/language.types.integer">integer</a></span> <a href="fusionary-craftcms-bootstrap-bootstrap.html#$depth-detail">$depth</a> <span style="color: #0000BB"></span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">1</span></div>
+    <div class="signature"><span class="signature-defs">protected static</span> <span class="signature-type"><a href="http://www.php.net/language.types.integer">integer</a></span> <a href="fusionary-craftcms-bootstrap-bootstrap.html#$depth-detail">$depth</a> <span style="color: #0000BB"></span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">1</span></div>
 
 
     <div class="detail-header h3" id="$instance-detail">
@@ -229,7 +245,7 @@
 
     
     <div class="doc-description">
-        <p>Singleton instance of this class.</p>
+        <p>Singleton instance.</p>
 
             </div>
 
@@ -246,7 +262,7 @@
         
         define()
         <span class="detail-header-tag small">
-            public                                    method
+            public                        static            method
                     </span>
     </div>
 
@@ -258,7 +274,7 @@
             </div>
 
     <table class="detail-table table table-striped table-bordered table-hover">
-        <tr><td colspan="3" class="signature"><span class="signature-defs">public</span> <span class="signature-type"><a href="fusionary-craftcms-bootstrap-bootstrap.html">fusionary\craftcms\bootstrap\Bootstrap</a></span> <strong><a href="fusionary-craftcms-bootstrap-bootstrap.html#define()-detail">define</a></strong> ( <span class="signature-type">\fusionary\craftcms\bootstrap\string</span> <span style="color: #0000BB">$name</span>, <span style="color: #0000BB">$value</span> )</td></tr>
+        <tr><td colspan="3" class="signature"><span class="signature-defs">public static</span> <span class="signature-type"><a href="fusionary-craftcms-bootstrap-bootstrap.html">fusionary\craftcms\bootstrap\Bootstrap</a></span> <strong><a href="fusionary-craftcms-bootstrap-bootstrap.html#define()-detail">define</a></strong> ( <span class="signature-type">\fusionary\craftcms\bootstrap\string</span> <span style="color: #0000BB">$name</span>, <span style="color: #0000BB">$value</span> )</td></tr>
                                     <tr>
                   <td class="param-name-col"><span style="color: #0000BB">$name</span></td>
                   <td class="param-type-col"><a href="http://www.php.net/language.types.string">string</a></td>
@@ -273,19 +289,71 @@
 
 <!--	-->
 
-    <div class="detail-header h3" id="dotEnv()-detail">
+    <div class="detail-header h3" id="getApp()-detail">
         <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
-        <a class="tool-link hash" href="fusionary-craftcms-bootstrap-bootstrap.html#dotEnv()-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+        <a class="tool-link hash" href="fusionary-craftcms-bootstrap-bootstrap.html#getApp()-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
         
-        dotEnv()
+        getApp()
         <span class="detail-header-tag small">
-            public                                    method
+            public                        static            method
                     </span>
     </div>
 
     
     <div class="doc-description">
-        <p><strong>Apply environment variables from .env file and defines CRAFT_ENVIRONMENT constant.</strong></p>
+        <p><strong>Get the bootstrapped app.</strong></p>
+
+        
+            </div>
+
+    <table class="detail-table table table-striped table-bordered table-hover">
+        <tr><td colspan="3" class="signature"><span class="signature-defs">public static</span> <span class="signature-type">\yii\base\Application</span> <strong><a href="fusionary-craftcms-bootstrap-bootstrap.html#getApp()-detail">getApp</a></strong> ( <span class="signature-type">\fusionary\craftcms\bootstrap\string</span> <span style="color: #0000BB">$type&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">self</span><span style="color: #007700">::</span><span style="color: #0000BB">APP_TYPE_WEB</span> )</td></tr>
+                                    <tr>
+                  <td class="param-name-col"><span style="color: #0000BB">$type</span></td>
+                  <td class="param-type-col"><a href="http://www.php.net/language.types.string">string</a></td>
+                  <td class="param-desc-col"><p>One of <a href="fusionary-craftcms-bootstrap-bootstrap.html#$appTypes-detail">$appTypes</a>, deaults to 'web'.</p>
+</td>
+                </tr>
+                                                </table>
+
+<!--	-->
+
+    <div class="detail-header h3" id="getInstance()-detail">
+        <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
+        <a class="tool-link hash" href="fusionary-craftcms-bootstrap-bootstrap.html#getInstance()-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+        
+        getInstance()
+        <span class="detail-header-tag small">
+            protected                        static            method
+                    </span>
+    </div>
+
+    
+    <div class="doc-description">
+        <p><strong>Get instance statically.</strong></p>
+
+        
+            </div>
+
+    <table class="detail-table table table-striped table-bordered table-hover">
+        <tr><td colspan="3" class="signature"><span class="signature-defs">protected static</span> <span class="signature-type"><a href="fusionary-craftcms-bootstrap-bootstrap.html">fusionary\craftcms\bootstrap\Bootstrap</a></span> <strong><a href="fusionary-craftcms-bootstrap-bootstrap.html#getInstance()-detail">getInstance</a></strong> ( )</td></tr>
+            </table>
+
+<!--	-->
+
+    <div class="detail-header h3" id="loadDotEnv()-detail">
+        <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
+        <a class="tool-link hash" href="fusionary-craftcms-bootstrap-bootstrap.html#loadDotEnv()-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
+        
+        loadDotEnv()
+        <span class="detail-header-tag small">
+            public                        static            method
+                    </span>
+    </div>
+
+    
+    <div class="doc-description">
+        <p><strong>Apply environment variables from a .env file and defines CRAFT_ENVIRONMENT constant.</strong></p>
 
         <p>Fails silently if</p>
 <ul>
@@ -296,7 +364,7 @@
             </div>
 
     <table class="detail-table table table-striped table-bordered table-hover">
-        <tr><td colspan="3" class="signature"><span class="signature-defs">public</span> <span class="signature-type"><a href="fusionary-craftcms-bootstrap-bootstrap.html">fusionary\craftcms\bootstrap\Bootstrap</a></span> <strong><a href="fusionary-craftcms-bootstrap-bootstrap.html#dotEnv()-detail">dotEnv</a></strong> ( <span class="signature-type">\fusionary\craftcms\bootstrap\string</span> <span style="color: #0000BB">$path&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">CRAFT_BASE_PATH</span>, <span class="signature-type">\fusionary\craftcms\bootstrap\string</span> <span style="color: #0000BB">$file&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'.env'</span>, <span style="color: #0000BB">$logExceptions&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">false</span> )</td></tr>
+        <tr><td colspan="3" class="signature"><span class="signature-defs">public static</span> <span class="signature-type"><a href="fusionary-craftcms-bootstrap-bootstrap.html">fusionary\craftcms\bootstrap\Bootstrap</a></span> <strong><a href="fusionary-craftcms-bootstrap-bootstrap.html#loadDotEnv()-detail">loadDotEnv</a></strong> ( <span class="signature-type">\fusionary\craftcms\bootstrap\string</span> <span style="color: #0000BB">$path</span>, <span class="signature-type">\fusionary\craftcms\bootstrap\string</span> <span style="color: #0000BB">$fileName&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'.env'</span>, <span style="color: #0000BB">$logExceptions&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">false</span> )</td></tr>
                                     <tr>
                   <td class="param-name-col"><span style="color: #0000BB">$path</span></td>
                   <td class="param-type-col"><a href="http://www.php.net/language.types.string">string</a></td>
@@ -304,7 +372,7 @@
 </td>
                 </tr>
                             <tr>
-                  <td class="param-name-col"><span style="color: #0000BB">$file</span></td>
+                  <td class="param-name-col"><span style="color: #0000BB">$fileName</span></td>
                   <td class="param-type-col"><a href="http://www.php.net/language.types.string">string</a></td>
                   <td class="param-desc-col"><p>Filename of env file</p>
 </td>
@@ -319,65 +387,13 @@
 
 <!--	-->
 
-    <div class="detail-header h3" id="getApp()-detail">
-        <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
-        <a class="tool-link hash" href="fusionary-craftcms-bootstrap-bootstrap.html#getApp()-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
-        
-        getApp()
-        <span class="detail-header-tag small">
-            public                                    method
-                    </span>
-    </div>
-
-    
-    <div class="doc-description">
-        <p><strong>Get the bootstrapped app.</strong></p>
-
-        
-            </div>
-
-    <table class="detail-table table table-striped table-bordered table-hover">
-        <tr><td colspan="3" class="signature"><span class="signature-defs">public</span> <span class="signature-type">\yii\base\Application</span> <strong><a href="fusionary-craftcms-bootstrap-bootstrap.html#getApp()-detail">getApp</a></strong> ( <span class="signature-type">\fusionary\craftcms\bootstrap\string</span> <span style="color: #0000BB">$type&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">self</span><span style="color: #007700">::</span><span style="color: #0000BB">APP_TYPE_WEB</span> )</td></tr>
-                                    <tr>
-                  <td class="param-name-col"><span style="color: #0000BB">$type</span></td>
-                  <td class="param-type-col"><a href="http://www.php.net/language.types.string">string</a></td>
-                  <td class="param-desc-col"><p>One of [[$this-&gt;appTypes]], deaults to 'web'.</p>
-</td>
-                </tr>
-                                                </table>
-
-<!--	-->
-
-    <div class="detail-header h3" id="getInstance()-detail">
-        <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
-        <a class="tool-link hash" href="fusionary-craftcms-bootstrap-bootstrap.html#getInstance()-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
-        
-        getInstance()
-        <span class="detail-header-tag small">
-            public                        static            method
-                    </span>
-    </div>
-
-    
-    <div class="doc-description">
-        <p><strong>Get instance statically.</strong></p>
-
-        
-            </div>
-
-    <table class="detail-table table table-striped table-bordered table-hover">
-        <tr><td colspan="3" class="signature"><span class="signature-defs">public static</span> <span class="signature-type"><a href="fusionary-craftcms-bootstrap-bootstrap.html">fusionary\craftcms\bootstrap\Bootstrap</a></span> <strong><a href="fusionary-craftcms-bootstrap-bootstrap.html#getInstance()-detail">getInstance</a></strong> ( )</td></tr>
-            </table>
-
-<!--	-->
-
     <div class="detail-header h3" id="setDepth()-detail">
         <a href="#" class="tool-link" title="go to top"><span class="glyphicon glyphicon-arrow-up"></span></a>
         <a class="tool-link hash" href="fusionary-craftcms-bootstrap-bootstrap.html#setDepth()-detail" title="direct link to this method"><span class="glyphicon icon-hash"></span></a>
         
         setDepth()
         <span class="detail-header-tag small">
-            public                                    method
+            public                        static            method
                     </span>
     </div>
 
@@ -389,7 +405,7 @@
             </div>
 
     <table class="detail-table table table-striped table-bordered table-hover">
-        <tr><td colspan="3" class="signature"><span class="signature-defs">public</span> <span class="signature-type"><a href="fusionary-craftcms-bootstrap-bootstrap.html">fusionary\craftcms\bootstrap\Bootstrap</a></span> <strong><a href="fusionary-craftcms-bootstrap-bootstrap.html#setDepth()-detail">setDepth</a></strong> ( <span class="signature-type">\fusionary\craftcms\bootstrap\int</span> <span style="color: #0000BB">$depth</span> )</td></tr>
+        <tr><td colspan="3" class="signature"><span class="signature-defs">public static</span> <span class="signature-type"><a href="fusionary-craftcms-bootstrap-bootstrap.html">fusionary\craftcms\bootstrap\Bootstrap</a></span> <strong><a href="fusionary-craftcms-bootstrap-bootstrap.html#setDepth()-detail">setDepth</a></strong> ( <span class="signature-type">\fusionary\craftcms\bootstrap\int</span> <span style="color: #0000BB">$depth</span> )</td></tr>
                                     <tr>
                   <td class="param-name-col"><span style="color: #0000BB">$depth</span></td>
                   <td class="param-type-col"><a href="http://www.php.net/language.types.integer">integer</a></td>
@@ -405,19 +421,19 @@
         
         setSite()
         <span class="detail-header-tag small">
-            public                                    method
+            public                        static            method
                     </span>
     </div>
 
     
     <div class="doc-description">
-        <p><strong>Define the CRAFT_SITE constant</strong></p>
+        <p><strong>Define the <code>CRAFT_SITE</code> constant</strong></p>
 
         
             </div>
 
     <table class="detail-table table table-striped table-bordered table-hover">
-        <tr><td colspan="3" class="signature"><span class="signature-defs">public</span> <span class="signature-type"><a href="fusionary-craftcms-bootstrap-bootstrap.html">fusionary\craftcms\bootstrap\Bootstrap</a></span> <strong><a href="fusionary-craftcms-bootstrap-bootstrap.html#setSite()-detail">setSite</a></strong> ( <span class="signature-type">\fusionary\craftcms\bootstrap\string</span> <span style="color: #0000BB">$handle</span> )</td></tr>
+        <tr><td colspan="3" class="signature"><span class="signature-defs">public static</span> <span class="signature-type"><a href="fusionary-craftcms-bootstrap-bootstrap.html">fusionary\craftcms\bootstrap\Bootstrap</a></span> <strong><a href="fusionary-craftcms-bootstrap-bootstrap.html#setSite()-detail">setSite</a></strong> ( <span class="signature-type">\fusionary\craftcms\bootstrap\string</span> <span style="color: #0000BB">$handle</span> )</td></tr>
                                     <tr>
                   <td class="param-name-col"><span style="color: #0000BB">$handle</span></td>
                   <td class="param-type-col"><a href="http://www.php.net/language.types.string">string</a></td>
@@ -466,7 +482,7 @@
 </div>
 
 <footer class="footer">
-        <p class="pull-right"><small>Page generated on Fri, 02 Mar 2018 17:42:58 +0000</small></p>
+        <p class="pull-right"><small>Page generated on Mon, 05 Mar 2018 13:16:22 +0000</small></p>
     Powered by <a href="http://www.yiiframework.com/" rel="external">Yii Framework</a></footer>
 
 <script>jQuery(function ($) {
