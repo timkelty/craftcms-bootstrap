@@ -25,10 +25,10 @@ class Bootstrap
     /**
      * @var int Depth of running script from project root.
      */
-    protected $depth = 1;
+    protected static $depth = 1;
 
     /**
-     * @var Bootstrap Singleton instance of this class.
+     * @var Bootstrap Singleton instance.
      */
     protected static $instance;
 
@@ -36,7 +36,7 @@ class Bootstrap
      * Get instance statically.
      * @return Bootstrap
      */
-    public static function getInstance(): Bootstrap
+    protected static function getInstance(): Bootstrap
     {
         return static::$instance = static::$instance ?? new static;
     }
@@ -44,20 +44,20 @@ class Bootstrap
     /**
      * Get the bootstrapped app.
      *
-     * @param  string      $type One of [[$this->appTypes]], deaults to 'web'.
+     * @param  string      $type One of [[$appTypes]], deaults to 'web'.
      * @return Application
      */
-    public function getApp(string $type = self::APP_TYPE_WEB): Application
+    public static function getApp(string $type = self::APP_TYPE_WEB): Application
     {
         if (!in_array($type, static::$appTypes)) {
             throw new \Exception(sprintf('"%s" is not a valid type.', $type));
         }
 
-        $this
+        static::getInstance()
           ->define('CRAFT_VENDOR_PATH', dirname(__DIR__, 3))
-          ->define('CRAFT_BASE_PATH', dirname(realpath($_SERVER['SCRIPT_FILENAME']), $this->depth + 1))
+          ->define('CRAFT_BASE_PATH', dirname(realpath($_SERVER['SCRIPT_FILENAME']), static::$depth + 1))
           ->define('CRAFT_TEMPLATES_PATH', CRAFT_BASE_PATH . '/src/templates')
-          ->dotEnv();
+          ->loadDotEnv(CRAFT_BASE_PATH);
 
         return require CRAFT_VENDOR_PATH . '/craftcms/cms/bootstrap/' . $type . '.php';
     }
@@ -68,13 +68,13 @@ class Bootstrap
      * @param  mixed     $value
      * @return Bootstrap
      */
-    public function define(string $name, $value): Bootstrap
+    public static function define(string $name, $value): Bootstrap
     {
         if (!defined($name)) {
             define($name, $value);
         }
 
-        return $this;
+        return static::getInstance();
     }
 
     /**
@@ -82,25 +82,25 @@ class Bootstrap
      * @param  int       $depth
      * @return Bootstrap
      */
-    public function setDepth(int $depth): Bootstrap
+    public static function setDepth(int $depth): Bootstrap
     {
-        $this->depth = $depth;
+        static::$depth = $depth;
 
-        return $this;
+        return static::getInstance();
     }
 
     /**
-     * Define the CRAFT_SITE constant
+     * Define the `CRAFT_SITE` constant
      * @param  string    $handle site handle
      * @return Bootstrap
      */
-    public function setSite(string $handle): Bootstrap
+    public static function setSite(string $handle): Bootstrap
     {
-        return $this->define('CRAFT_SITE', $handle);
+        return static::getInstance()->define('CRAFT_SITE', $handle);
     }
 
     /**
-     * Apply environment variables from .env file and defines CRAFT_ENVIRONMENT constant.
+     * Apply environment variables from a .env file and defines CRAFT_ENVIRONMENT constant.
      *
      * Fails silently if
      * - env file is not found (e.g. in production).
@@ -111,9 +111,9 @@ class Bootstrap
      * @param  bool      $logExceptions Log exceptions with error_log
      * @return Bootstrap
      */
-    public function dotEnv(string $path = CRAFT_BASE_PATH, string $file = '.env', $logExceptions = false): Bootstrap
+    public static function loadDotEnv(string $path, string $fileName = '.env', $logExceptions = false): Bootstrap
     {
-        $dotenv = new Dotenv($path, $file);
+        $dotenv = new Dotenv($path, $fileName);
 
         try {
             $dotenv->load();
@@ -123,6 +123,7 @@ class Bootstrap
             }
         }
 
-        return $this->define('CRAFT_ENVIRONMENT', Environment::get('CRAFT_ENVIRONMENT', 'production'));
+        return static::getInstance()
+            ->define('CRAFT_ENVIRONMENT', Environment::get('CRAFT_ENVIRONMENT', 'production'));
     }
 }
