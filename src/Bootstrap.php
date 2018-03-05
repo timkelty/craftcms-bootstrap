@@ -44,10 +44,10 @@ class Bootstrap
     /**
      * Get the bootstrapped app.
      *
-     * @param  string      $type One of [[$appTypes]], deaults to 'web'.
+     * @param  string      $type One of [[$appTypes]].
      * @return Application
      */
-    public static function getApp(string $type = self::APP_TYPE_WEB): Application
+    public static function getApp(string $type): Application
     {
         if (!in_array($type, static::$appTypes)) {
             throw new \Exception(sprintf('"%s" is not a valid type.', $type));
