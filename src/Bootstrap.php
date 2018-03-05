@@ -38,7 +38,7 @@ class Bootstrap
      */
     public static function getInstance(): Bootstrap
     {
-        return static::$instance ?? new static;
+        return static::$instance = static::$instance ?? new static;
     }
 
     /**
