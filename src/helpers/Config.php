@@ -122,7 +122,6 @@ class Config
 
     /**
      * Get request headers
-     *
      * @param  string $name header name
      * @return string       header value
      */

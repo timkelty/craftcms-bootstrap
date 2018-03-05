@@ -34,6 +34,7 @@ class Bootstrap
 
     /**
      * Get instance statically.
+     *
      * @return Bootstrap
      */
     protected static function getInstance(): Bootstrap
@@ -63,9 +64,10 @@ class Bootstrap
     }
 
     /**
-     * Get and run the app
-     * @param  string      $type One of [[$appTypes]], deaults to 'web'.
-     * @return int the exit status
+     * Run the app.
+     *
+     * @param  string $type One of [[$appTypes]], deaults to 'web'.
+     * @return int    the exit status
      */
     public function run(string $type = self::APP_TYPE_WEB): int
     {
@@ -76,6 +78,7 @@ class Bootstrap
 
     /**
      * Gracefully define a PHP constant.
+     *
      * @param  string    $name
      * @param  mixed     $value
      * @return Bootstrap
@@ -91,6 +94,7 @@ class Bootstrap
 
     /**
      * Set depth from project root
+     *
      * @param  int       $depth
      * @return Bootstrap
      */
@@ -103,6 +107,7 @@ class Bootstrap
 
     /**
      * Define the `CRAFT_SITE` constant
+     *
      * @param  string    $handle site handle
      * @return Bootstrap
      */
@@ -112,10 +117,10 @@ class Bootstrap
     }
 
     /**
-     * Apply environment variables from a .env file and defines CRAFT_ENVIRONMENT constant.
+     * Apply environment variables from a .env file and defines `CRAFT_ENVIRONMENT` constant.
      *
-     * Fails silently if
-     * - env file is not found (e.g. in production).
+     * Fails silently if:
+     * - .env file is not found (e.g. in production).
      * - `CRAFT_ENVIRONMENT` is already defined.
      *
      * @param  string    $path          Path to directory containing env file
