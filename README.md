@@ -2,17 +2,20 @@
 
 ## What it does
 
-Reduces boilerplate for bootstrapping and configuration by abstracting common tasks to a simple api.
-It consists of 2 parts:
+Reduces boilerplate for bootstrapping and configuration by abstracting common tasks to a simple api. It consists of 2 parts:
 
-### Bootstrap (e.g `@webroot/index.php`)
+### Bootstrap
+
+> e.g `@webroot/index.php`
 
 - Reduces your app bootstrap boilerplate code to a single chainable statement.
   - This is especially helpful for achieving consistency when dealing with multiple access points (e.g. [multi-site](https://craftcms.com/news/craft-3-multi-site), [console app](https://craftcms.com/classreference/etc/console/ConsoleApp))
 - Sets [PHP constants](https://github.com/craftcms/docs/blob/v3/en/configuration.md#php-constants), with sensible fallbacks.
 - Gracefully loads .env file environment variables.
 
-### Configuration (e.g. `config/general.php`, any [configuration files](https://docs.craftcms.com/api/v3/craft-config-generalconfig.html#properties))
+### Configuration files
+
+> e.g. `config/general.php` or any [configuration files](https://docs.craftcms.com/api/v3/craft-config-generalconfig.html#properties)
 
 - Retrieves environment variables with fallbacks and [content-aware type conversion](https://github.com/jpcercal/environment#examples). For example:
   - `export MY_BOOL=true` → `bool`
@@ -34,11 +37,15 @@ It consists of 2 parts:
 composer require fusionary/craftcms-bootstrap
 ```
 
+## API Documentation
+[Class Reference / API Documentation](http://htmlpreview.github.io/?https://github.com/timkelty/craftcms-bootstrap/blob/master/docs/api/fusionary-craftcms-bootstrap-bootstrap.html)
+
 ## Examples
 
 ### Web app
 
-`@root/public/index.php`
+> e.g. `@root/public/index.php`
+
 ```php
 <?php
 require_once dirname(__DIR__) . '/vendor/autoload.php';
@@ -47,7 +54,8 @@ fusionary\craftcms\bootstrap\Bootstrap::run();
 
 ### Multi-site web app
 
-`@root/public/site-handle/index.php`
+> e.g. `@root/public/site-handle/index.php`
+
 ```php
 <?php
 require_once dirname(__DIR__, 2) . '/vendor/autoload.php';
@@ -59,7 +67,8 @@ fusionary\craftcms\bootstrap\Bootstrap
 
 ### Console app
 
-`@root/craft`
+> e.g. `@root/craft`
+
 ```php
 <?php
 require_once dirname(__DIR__) . '/vendor/autoload.php';
@@ -73,7 +82,9 @@ will map all settings to corresponding environment variables (if they exist).
 
 Settings are converted from their Craft/PHP versions (camel-case) to their environment variable versions (all-caps, snake-case, prefixed — e.g. **CRAFT_**, **DB_**).
 
-#### Config File: `@root/config/general.php`
+#### General config
+
+> e.g. @root/config/general.php
 
 ```php
 <?php
@@ -107,7 +118,9 @@ return Config::mapMultiEnvConfig([
 // ];
 ```
 
-#### Config File: `@root/config/db.php`
+#### Database config
+
+> e.g. @root/config/db.php
 
 ```php
 <?php
@@ -141,9 +154,6 @@ return Config::mapConfig([
 //   'schema' => 'public',
 // ]
 ```
-
-## API Documentation
-[Class Reference / API Documentation](http://htmlpreview.github.io/?https://github.com/timkelty/craftcms-bootstrap/blob/master/docs/api/fusionary-craftcms-bootstrap-bootstrap.html)
 
 ## Generate documentation
 
