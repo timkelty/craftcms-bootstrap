@@ -1,7 +1,25 @@
 # Craft CMS Bootstrap
 
-- Provides chainable methods to streamline your Craft CMS bootstrapping process.
-- Provides helpers to automatically retrieve Craft config settings from environment variables.
+## What it does
+
+Reduces boilerplate for bootstrapping and configuration by abstracting common tasks to a simple api.
+It consists of 2 parts:
+
+### Bootstrap (e.g `@webroot/index.php`)
+
+- Reduces your app bootstrap boilerplate code to a single chainable statement.
+  - This is especially helpful for achieving consistency when dealing with multiple access points (e.g. [multi-site](https://craftcms.com/news/craft-3-multi-site), [console app](https://craftcms.com/classreference/etc/console/ConsoleApp))
+- Sets [PHP constants](https://github.com/craftcms/docs/blob/v3/en/configuration.md#php-constants), with sensible fallbacks.
+- Gracefully loads .env file environment variables.
+
+### Configuration (e.g. `config/general.php`, any [configuration files](https://docs.craftcms.com/api/v3/craft-config-generalconfig.html#properties))
+
+- Retrieves environment variables with fallbacks and [content-aware type conversion](https://github.com/jpcercal/environment#examples). For example:
+  - `export MY_BOOL=true` → `bool`
+  - `export MY_INT=3` → `int`
+- Provides access to HTTP request headers (via `yii\web\Request`), should your configuration rely on it.
+- Provides method to map your entire config to any matching/prefixed environment variables.
+  - For example, `$config['allowAutoUpdates']` will match `CRAFT_ALLOW_AUTO_UPDATES` from environment
 
 ## Prerequisites
 
@@ -20,49 +38,46 @@ composer require fusionary/craftcms-bootstrap
 
 ### Web app
 
-`public/index.php`
+`@root/public/index.php`
 ```php
 <?php
-use fusionary\craftcms\bootstrap\Bootstrap;
 require_once dirname(__DIR__) . '/vendor/autoload.php';
-Bootstrap::getApp()->run();
+fusionary\craftcms\bootstrap\Bootstrap::run();
 ```
 
 ### Multi-site web app
 
-`public/site-handle/index.php`
+`@root/public/site-handle/index.php`
 ```php
 <?php
- use fusionary\craftcms\bootstrap\Bootstrap;
- require_once dirname(__DIR__, 2) . '/vendor/autoload.php';
- Bootstrap::getInstance()
-     ->setDepth(2)
-     ->setSite('site-handle') // or use basename(__DIR__) if the containing folder matches the site handle
-     ->getApp()
-     ->run();
+require_once dirname(__DIR__, 2) . '/vendor/autoload.php';
+fusionary\craftcms\bootstrap\Bootstrap
+    ->setDepth(2) // Set the depth of this script from your project root (`CRAFT_BASE_PATH`) to determine paths
+    ->setSite('site-handle') // If the containing folder matches the site handle, you could dynamically set this with `basename(__DIR__)`
+    ->run();
 ```
 
 ### Console app
 
-`bin/craft`
+`@root/craft`
 ```php
 <?php
-use fusionary\craftcms\bootstrap\Bootstrap;
 require_once dirname(__DIR__) . '/vendor/autoload.php';
-exit(Bootstrap::getInstance()->getApp('console')->run());
+exit(Bootstrap::run('console')->setDepth(0)->run()); // Override the default depth of 1, since this script is in `@root`.
 ```
 
-### Dynamically loading config from environment variables
+### Environment variable mapping
 
 Passing your config through `Config::mapMultiEnvConfig` or `Config::mapConfig`
 will map all settings to corresponding environment variables (if they exist).
 
-Settings assumed to be camel-case, while environment variables are snake-cake
-and all-caps, with prefix (e.g. **CRAFT_**, **DB_**).
+Settings are converted from their Craft/PHP versions (camel-case) to their environment variable versions (all-caps, snake-case, prefixed — e.g. **CRAFT_**, **DB_**).
 
-`config/general.php`
+#### Config File: `@root/config/general.php`
+
 ```php
 <?php
+// Example environment:
 // export CRAFT_ALLOW_AUTO_UPDATES=true;
 
 use fusionary\craftcms\bootstrap\helpers\Config;
@@ -71,13 +86,17 @@ return Config::mapMultiEnvConfig([
     '*' => [
         'allowAutoUpdates' => true,
         'someOtherSetting' => 'foo',
+
+        // Example: get HTTP header from request
+        'devServerProxy' => Config::getHeader('x-dev-server-proxy') ?? false,
     ],
     'production' => [
         'allowAutoUpdates' => false,
     ]
 ]);
 
-// [
+// Result:
+// return [
 //  '*' => [
 //    'allowAutoUpdates' => true,
 //    'someOtherSetting' => 'foo'
@@ -85,12 +104,14 @@ return Config::mapMultiEnvConfig([
 //  'production' => [
 //    'allowAutoUpdates' => true
 //  ]
-// ]
+// ];
 ```
 
-`config/db.php`
+#### Config File: `@root/config/db.php`
+
 ```php
 <?php
+// Example environment:
 // export DB_DRIVER=mysql
 // export DB_SERVER=mysql
 // export DB_USER=my_app_user
@@ -100,6 +121,7 @@ return Config::mapMultiEnvConfig([
 
 use fusionary\craftcms\bootstrap\helpers\Config;
 
+// Pass prefix as 2nd argument, defaults to 'CRAFT_'
 return Config::mapConfig([
   'driver' => null,
   'server' => null,
@@ -109,7 +131,8 @@ return Config::mapConfig([
   'schema' => null,
 ], 'DB_');
 
-// [
+// Result:
+// return [
 //   'driver' => 'mysql',
 //   'server' => 'mysql',
 //   'user' => 'my_app_user',
