@@ -1,5 +1,7 @@
 # Craft CMS Bootstrap
 
+![Boot by Ben Davis from the Noun Project](resources/boot-logo.svg)
+
 ## What it does
 
 Reduces boilerplate for bootstrapping and configuration by abstracting common tasks to a simple api. It consists of 2 parts:
@@ -160,3 +162,7 @@ return Config::mapConfig([
 ```
 composer run-script build-docs
 ```
+
+## Acknowledgements
+
+"[Boot](https://thenounproject.com/term/boot/1466612/)" icon by Ben Davis from [The Noun Project](https://thenounproject.com/)
