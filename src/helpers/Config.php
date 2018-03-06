@@ -2,8 +2,8 @@
 namespace fusionary\craftcms\bootstrap\helpers;
 
 use Cekurte\Environment\Environment;
-use Stringy\Stringy;
 use Illuminate\Support\Collection;
+use Stringy\Stringy;
 use yii\web\Request;
 
 /**
