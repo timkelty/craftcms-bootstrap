@@ -22,6 +22,6 @@
     }
   },
   "scripts": {
-    "build-docs": "apidoc api src docs/api --page-title='Craft CMS Bootstrap'"
+    "build-docs": "./vendor/bin/apidoc api src docs/api --page-title='Craft CMS Bootstrap'"
   }
 }
