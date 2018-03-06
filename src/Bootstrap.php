@@ -69,7 +69,7 @@ class Bootstrap
      * @param  string $type One of [[$appTypes]], deaults to 'web'.
      * @return int    the exit status
      */
-    public function run(string $type = self::APP_TYPE_WEB): int
+    public static function run(string $type = self::APP_TYPE_WEB): int
     {
         return static::getInstance()
             ->getApp($type)
