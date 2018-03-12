@@ -17,7 +17,7 @@ Reduces boilerplate for bootstrapping and configuration by abstracting common ta
 
 ### Configuration files
 
-> e.g. `config/general.php` or any [configuration files](https://docs.craftcms.com/api/v3/craft-config-generalconfig.html#properties)
+> e.g. `@root/config/general.php` or any [configuration files](https://docs.craftcms.com/api/v3/craft-config-generalconfig.html#properties)
 
 - Retrieves environment variables with fallbacks and [content-aware type conversion](https://github.com/jpcercal/environment#examples). For example:
   - `export MY_BOOL=true` → `bool`
