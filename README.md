@@ -4,8 +4,9 @@
 
 ## What it does
 
-Reduces boilerplate for bootstrapping and configuration by abstracting common tasks to a simple api. It consists of 2 parts:
-
+Reduces boilerplate for bootstrapping and configuration by abstracting common tasks to a simple api.
+Used by [Fusionary's Craft CMS Boilerplate](https://github.com/timkelty/craftcms-boilerplate).
+ 
 ### Bootstrap
 
 > e.g `@webroot/index.php`
