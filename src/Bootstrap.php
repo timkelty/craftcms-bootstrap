@@ -57,7 +57,7 @@ class Bootstrap
         static::getInstance()
           ->define('CRAFT_VENDOR_PATH', dirname(__DIR__, 3))
           ->define('CRAFT_BASE_PATH', dirname(realpath($_SERVER['SCRIPT_FILENAME']), static::$depth + 1))
-          ->define('CRAFT_TEMPLATES_PATH', CRAFT_BASE_PATH . '/src/templates')
+          ->define('CRAFT_TEMPLATES_PATH', CRAFT_BASE_PATH . '/src/twig')
           ->loadDotEnv(CRAFT_BASE_PATH);
 
         return require CRAFT_VENDOR_PATH . '/craftcms/cms/bootstrap/' . $type . '.php';
