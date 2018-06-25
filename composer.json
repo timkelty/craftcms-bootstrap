@@ -10,9 +10,9 @@
   ],
   "require": {
     "php": ">=7.1.0",
-    "illuminate/support": "^5.6",
     "cekurte/environment": "^0.3.0",
-    "vlucas/phpdotenv": "^2.4"
+    "vlucas/phpdotenv": "^2.4",
+    "tightenco/collect": "^5.6"
   },
   "require-dev": {
     "yiisoft/yii2-apidoc": "^2.1"
